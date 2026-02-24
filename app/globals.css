@@ -1,14 +1,24 @@
 /* ─── Font Face Declarations ───────────────────────────────────────────────
-   Place your font files in /public/fonts/
+   Font files go in /public/fonts/
    Expected files:
-     Saans-Regular.woff2, Saans-Medium.woff2, Saans-SemiBold.woff2, Saans-Bold.woff2
-     Serrif-Regular.woff2, Serrif-Medium.woff2, Serrif-Bold.woff2
-     SaansMono-Regular.woff2, SaansMono-Medium.woff2
+     SerrifVF.ttf          (variable font, weight 100–900)
+     Saans-Regular.ttf     (weight 400)
+     Saans-Medium.ttf      (weight 500)
+     Saans-Bold.ttf        (weight 700)
+     SaansMono-Medium.ttf  (weight 500)
 ─────────────────────────────────────────────────────────────────────────── */
 
 @font-face {
+  font-family: "Serrif VF";
+  src: url("/fonts/SerrifVF.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Saans";
-  src: url("/fonts/Saans-Regular.woff2") format("woff2");
+  src: url("/fonts/Saans-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -16,7 +26,7 @@
 
 @font-face {
   font-family: "Saans";
-  src: url("/fonts/Saans-Medium.woff2") format("woff2");
+  src: url("/fonts/Saans-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -24,55 +34,15 @@
 
 @font-face {
   font-family: "Saans";
-  src: url("/fonts/Saans-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Saans";
-  src: url("/fonts/Saans-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Serrif";
-  src: url("/fonts/Serrif-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Serrif";
-  src: url("/fonts/Serrif-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Serrif";
-  src: url("/fonts/Serrif-Bold.woff2") format("woff2");
-  font-weight: 700;
+  src: url("/fonts/Saans-Bold.ttf") format("truetype");
+  font-weight: 600 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "Saans Mono";
-  src: url("/fonts/SaansMono-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Saans Mono";
-  src: url("/fonts/SaansMono-Medium.woff2") format("woff2");
+  src: url("/fonts/SaansMono-Medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -84,18 +54,30 @@
 
 /* ─── CSS Custom Properties ─────────────────────────────────────────────── */
 :root {
-  --color-cobalt: #1B1DB5;
-  --color-cobalt-dark: #14169A;
-  --color-cobalt-light: #2426CC;
-  --color-lavender: #EAEAF5;
-  --color-lavender-dark: #D8D8EE;
-  --color-indigo: #2323A5;
-  --color-white: #FFFFFF;
-  --color-black: #0D0D0D;
+  /* AirOps brand color tokens */
+  --white: #ffffff;
+  --off-white: #F8FFFA;
+  --near-black: #000d05;
 
-  --font-sans: "Saans", system-ui, sans-serif;
-  --font-serif: "Serrif", Georgia, serif;
-  --font-mono: "Saans Mono", ui-monospace, monospace;
+  --green-50: #f8fffb;
+  --green-100: #dfeae3;
+  --green-200: #CCFFE0;
+  --green-500: #008c44;
+  --green-600: #002910;
+
+  --interaction: #00ff64;
+  --accent-label: #EEFF8C;
+
+  --text-primary: #09090b;
+  --text-secondary: #676c79;
+  --text-tertiary: #a5aab6;
+
+  --stroke-primary: #ecedef;
+  --stroke-green: #d4e8da;
+
+  --font-sans: "Saans", "Helvetica Neue", sans-serif;
+  --font-serif: "Serrif VF", Georgia, serif;
+  --font-mono: "Saans Mono", "DM Mono", monospace;
 }
 
 /* ─── Base Styles ───────────────────────────────────────────────────────── */
@@ -107,16 +89,16 @@
   }
 
   body {
-    @apply bg-lavender text-indigo-brand font-sans;
+    @apply bg-off-white text-near-black font-sans;
   }
 
-  h1, h2, h3, h4 {
+  h1, h2, h3 {
     @apply font-serif;
   }
 
   ::selection {
-    background-color: var(--color-cobalt);
-    color: var(--color-white);
+    background-color: var(--interaction);
+    color: var(--near-black);
   }
 }
 
@@ -131,22 +113,27 @@
     @apply font-mono text-label-sm uppercase tracking-widest;
   }
 
-  /* Pill badge */
+  /* Pill badge — sharp corners, accent-label fill */
   .badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-label-sm font-mono uppercase tracking-widest;
+    @apply inline-flex items-center px-3 py-1 text-label-sm font-mono uppercase tracking-widest;
+    border-radius: 0;
   }
 
-  .badge-cobalt {
-    @apply badge bg-cobalt text-white;
+  .badge-green {
+    @apply badge bg-accent-label text-near-black;
   }
 
-  .badge-lavender {
-    @apply badge bg-lavender-dark text-indigo-brand;
+  .badge-dark {
+    @apply badge bg-near-black text-white;
+  }
+
+  .badge-muted {
+    @apply badge bg-green-100 text-near-black;
   }
 
   /* Divider */
   .divider {
-    @apply border-t border-indigo-brand/15;
+    @apply border-t border-stroke-green;
   }
 
   .divider-white {

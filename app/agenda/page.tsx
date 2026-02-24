@@ -14,7 +14,7 @@ export default function AgendaPage() {
       <Nav />
 
       {/* Page hero */}
-      <div className="bg-cobalt pt-32 pb-16">
+      <div className="bg-green-600 pt-32 pb-16">
         <div className="container-site">
           <p className="label text-white/50 mb-4">{agenda.eventName}</p>
           <h1 className="text-display-xl font-serif text-white mb-2">Agenda</h1>
@@ -23,7 +23,7 @@ export default function AgendaPage() {
       </div>
 
       {/* Sticky day tabs */}
-      <div className="sticky top-16 z-40 bg-lavender/90 backdrop-blur-md border-b border-indigo-brand/10">
+      <div className="sticky top-16 z-40 bg-white/95 backdrop-blur-md border-b border-stroke-green">
         <div className="container-site">
           <div className="flex gap-1 py-3 overflow-x-auto scrollbar-none" role="tablist" aria-label="Days">
             {agenda.days.map((d) => (
@@ -34,10 +34,10 @@ export default function AgendaPage() {
                 aria-controls={`panel-${d.id}`}
                 onClick={() => setActiveDay(d.id)}
                 className={`
-                  shrink-0 px-5 py-2.5 rounded-full font-mono text-label-lg uppercase tracking-widest transition-colors
+                  shrink-0 px-5 py-2.5 font-mono text-label-lg uppercase tracking-widest transition-colors
                   ${d.id === activeDay
-                    ? "bg-cobalt text-white"
-                    : "text-indigo-brand hover:bg-lavender-dark"
+                    ? "bg-near-black text-white"
+                    : "text-near-black hover:bg-green-100"
                   }
                 `}
               >
@@ -45,7 +45,7 @@ export default function AgendaPage() {
                 <span
                   className={`
                     ml-2 hidden sm:inline font-sans normal-case tracking-normal text-body-sm
-                    ${d.id === activeDay ? "text-white/60" : "text-indigo-brand/40"}
+                    ${d.id === activeDay ? "text-white/60" : "text-near-black/40"}
                   `}
                 >
                   {d.date}
@@ -57,18 +57,18 @@ export default function AgendaPage() {
       </div>
 
       {/* Day panel */}
-      <main className="bg-lavender section" id={`panel-${day.id}`} role="tabpanel">
+      <main className="bg-off-white section" id={`panel-${day.id}`} role="tabpanel">
         <div className="container-site">
           {/* Day header */}
           <div className="mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
-              <p className="label text-cobalt mb-2">{day.label} — {day.date}</p>
+              <p className="label text-green-500 mb-2">{day.label} — {day.date}</p>
               {day.theme && (
-                <h2 className="text-display-lg font-serif text-indigo-brand">{day.theme}</h2>
+                <h2 className="text-display-lg font-serif text-near-black">{day.theme}</h2>
               )}
             </div>
             {day.location && (
-              <p className="font-mono text-label-sm text-indigo-brand/50 flex items-center gap-1.5">
+              <p className="font-mono text-label-sm text-near-black/50 flex items-center gap-1.5">
                 <PinIcon />
                 {day.location}
               </p>
@@ -86,7 +86,7 @@ export default function AgendaPage() {
 
           {day.sessions.length === 0 && (
             <div className="text-center py-24">
-              <p className="font-mono text-label-lg text-indigo-brand/30 uppercase tracking-widest">
+              <p className="font-mono text-label-lg text-near-black/30 uppercase tracking-widest">
                 Agenda coming soon
               </p>
             </div>
@@ -94,7 +94,7 @@ export default function AgendaPage() {
         </div>
       </main>
 
-      <footer className="bg-cobalt text-white py-12">
+      <footer className="bg-green-600 text-white py-12">
         <div className="container-site flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <p className="font-mono text-label-sm text-white/40 uppercase tracking-widest">
             {agenda.eventName}

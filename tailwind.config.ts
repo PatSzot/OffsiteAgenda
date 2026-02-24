@@ -9,26 +9,29 @@ const config: Config = {
     extend: {
       colors: {
         // AirOps brand palette
-        cobalt: {
-          DEFAULT: "#1B1DB5",
-          dark: "#14169A",
-          light: "#2426CC",
+        "near-black": "#000d05",
+        "off-white": "#F8FFFA",
+        interaction: "#00ff64",
+        "accent-label": "#EEFF8C",
+        green: {
+          50: "#f8fffb",
+          100: "#dfeae3",
+          200: "#CCFFE0",
+          500: "#008c44",
+          600: "#002910",
         },
-        lavender: {
-          DEFAULT: "#EAEAF5",
-          dark: "#D8D8EE",
-        },
-        indigo: {
-          brand: "#2323A5",
-        },
+        "stroke-green": "#d4e8da",
+        "stroke-primary": "#ecedef",
+        "text-muted": "#676c79",
+        "text-ghost": "#a5aab6",
       },
       fontFamily: {
         // Saans — primary sans-serif (body, UI)
-        sans: ["Saans", "system-ui", "sans-serif"],
-        // Serrif — editorial serif (headlines)
-        serif: ["Serrif", "Georgia", "serif"],
+        sans: ["Saans", "Helvetica Neue", "sans-serif"],
+        // Serrif VF — editorial serif (headlines)
+        serif: ["Serrif VF", "Georgia", "serif"],
         // Saans Mono — labels, small caps, code
-        mono: ["Saans Mono", "ui-monospace", "monospace"],
+        mono: ["Saans Mono", "DM Mono", "monospace"],
       },
       fontSize: {
         // Display scale
@@ -48,9 +51,6 @@ const config: Config = {
         "18": "4.5rem",
         "22": "5.5rem",
         "26": "6.5rem",
-      },
-      borderRadius: {
-        "4xl": "2rem",
       },
       animation: {
         "fade-in": "fadeIn 0.4s ease-out",
