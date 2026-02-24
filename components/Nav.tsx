@@ -12,7 +12,7 @@ export function Nav() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-lavender/80 backdrop-blur-md border-b border-indigo-brand/10">
+    <header className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-stroke-green">
       <nav className="container-site flex items-center justify-between h-16">
         {/* Wordmark / logo slot */}
         <Link
@@ -20,11 +20,10 @@ export function Nav() {
           className="flex items-center gap-2 group"
           aria-label="AirOps Lisbon 2026 — home"
         >
-          {/* Logo image — swap src once file is provided */}
-          <div className="w-7 h-7 rounded bg-cobalt flex items-center justify-center">
+          <div className="w-7 h-7 bg-green-500 flex items-center justify-center">
             <span className="text-white font-mono text-label-sm font-medium">A</span>
           </div>
-          <span className="font-mono text-label-lg text-indigo-brand uppercase tracking-widest hidden sm:inline">
+          <span className="font-mono text-label-lg text-near-black uppercase tracking-widest hidden sm:inline">
             AirOps
           </span>
         </Link>
@@ -38,10 +37,10 @@ export function Nav() {
                 <Link
                   href={href}
                   className={`
-                    px-4 py-2 rounded-full font-mono text-label-lg uppercase tracking-widest transition-colors
+                    px-4 py-2 font-mono text-label-lg uppercase tracking-widest transition-colors
                     ${active
-                      ? "bg-cobalt text-white"
-                      : "text-indigo-brand hover:bg-lavender-dark"
+                      ? "bg-near-black text-white"
+                      : "text-near-black hover:bg-green-100"
                     }
                   `}
                 >

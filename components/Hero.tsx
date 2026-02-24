@@ -35,7 +35,7 @@ function AzulejoPattern() {
 
 export function Hero() {
   return (
-    <section className="relative bg-cobalt text-white overflow-hidden min-h-[92vh] flex flex-col justify-end">
+    <section className="relative bg-green-600 text-white overflow-hidden min-h-[92vh] flex flex-col justify-end">
       <AzulejoPattern />
 
       {/* Top wordmark band */}
@@ -64,9 +64,9 @@ export function Hero() {
             <a
               href="/agenda"
               className="
-                inline-flex items-center gap-2 px-7 py-4 rounded-full
-                bg-white text-cobalt font-mono text-label-lg uppercase tracking-widest
-                hover:bg-lavender transition-colors
+                inline-flex items-center gap-2 px-7 py-4
+                bg-interaction text-near-black font-mono text-label-lg uppercase tracking-widest
+                hover:opacity-90 transition-opacity
               "
             >
               View Agenda
@@ -79,8 +79,8 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Bottom decorative strip */}
-      <div className="h-1.5 w-full bg-gradient-to-r from-lavender via-white/30 to-transparent" />
+      {/* Bottom accent strip */}
+      <div className="h-1 w-full bg-interaction/40" />
     </section>
   );
 }
