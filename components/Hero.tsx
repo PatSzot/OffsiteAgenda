@@ -50,7 +50,7 @@ export function Hero() {
           </p>
 
           {/* Main headline */}
-          <h1 className="text-display-xl font-serif text-white mb-6 leading-[0.92]">
+          <h1 className="text-display-xl font-display text-white mb-6 leading-[0.92]">
             {agenda.tagline}
           </h1>
 

@@ -25,8 +25,10 @@ const config: Config = {
       fontFamily: {
         // Saans — primary sans-serif (body, UI)
         sans: ["Saans", "Helvetica Neue", "sans-serif"],
-        // Serrif VF — editorial serif (headlines)
+        // Serrif VF — editorial serif (h2, h3, body headings)
         serif: ["Serrif VF", "Georgia", "serif"],
+        // Sixtyfour — pixel display font (h1 only)
+        display: ["Sixtyfour", "monospace"],
         // Saans Mono — labels, small caps, code
         mono: ["Saans Mono", "DM Mono", "monospace"],
       },

@@ -17,7 +17,7 @@ export default function AgendaPage() {
       <div className="bg-cobalt pt-32 pb-16">
         <div className="container-site">
           <p className="label text-white/50 mb-4">{agenda.eventName}</p>
-          <h1 className="text-display-xl font-serif text-white mb-2">Agenda</h1>
+          <h1 className="text-display-xl font-display text-white mb-2">Agenda</h1>
           <p className="font-sans text-body-lg text-white/60">{agenda.dates} — {agenda.location}</p>
         </div>
       </div>
