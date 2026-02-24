@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -20,12 +21,14 @@ export function Nav() {
           className="flex items-center gap-2 group"
           aria-label="AirOps Lisbon 2026 — home"
         >
-          <div className="w-7 h-7 bg-green-500 flex items-center justify-center">
-            <span className="text-white font-mono text-label-sm font-medium">A</span>
-          </div>
-          <span className="font-mono text-label-lg text-near-black uppercase tracking-widest hidden sm:inline">
-            AirOps
-          </span>
+          <Image
+            src="/logo.svg"
+            alt="AirOps Offsite"
+            width={120}
+            height={32}
+            priority
+            className="h-8 w-auto"
+          />
         </Link>
 
         {/* Primary nav */}
