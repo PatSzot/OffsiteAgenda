@@ -1,0 +1,164 @@
+/* ─── Font Face Declarations ───────────────────────────────────────────────
+   Place your font files in /public/fonts/
+   Expected files:
+     Saans-Regular.woff2, Saans-Medium.woff2, Saans-SemiBold.woff2, Saans-Bold.woff2
+     Serrif-Regular.woff2, Serrif-Medium.woff2, Serrif-Bold.woff2
+     SaansMono-Regular.woff2, SaansMono-Medium.woff2
+─────────────────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: "Saans";
+  src: url("/fonts/Saans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saans";
+  src: url("/fonts/Saans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saans";
+  src: url("/fonts/Saans-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saans";
+  src: url("/fonts/Saans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Serrif";
+  src: url("/fonts/Serrif-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Serrif";
+  src: url("/fonts/Serrif-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Serrif";
+  src: url("/fonts/Serrif-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saans Mono";
+  src: url("/fonts/SaansMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saans Mono";
+  src: url("/fonts/SaansMono-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Custom Properties ─────────────────────────────────────────────── */
+:root {
+  --color-cobalt: #1B1DB5;
+  --color-cobalt-dark: #14169A;
+  --color-cobalt-light: #2426CC;
+  --color-lavender: #EAEAF5;
+  --color-lavender-dark: #D8D8EE;
+  --color-indigo: #2323A5;
+  --color-white: #FFFFFF;
+  --color-black: #0D0D0D;
+
+  --font-sans: "Saans", system-ui, sans-serif;
+  --font-serif: "Serrif", Georgia, serif;
+  --font-mono: "Saans Mono", ui-monospace, monospace;
+}
+
+/* ─── Base Styles ───────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-lavender text-indigo-brand font-sans;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+
+  ::selection {
+    background-color: var(--color-cobalt);
+    color: var(--color-white);
+  }
+}
+
+/* ─── Utility Components ────────────────────────────────────────────────── */
+@layer components {
+  /* Label / eyebrow text */
+  .label {
+    @apply font-mono text-label-lg uppercase tracking-widest;
+  }
+
+  .label-sm {
+    @apply font-mono text-label-sm uppercase tracking-widest;
+  }
+
+  /* Pill badge */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-label-sm font-mono uppercase tracking-widest;
+  }
+
+  .badge-cobalt {
+    @apply badge bg-cobalt text-white;
+  }
+
+  .badge-lavender {
+    @apply badge bg-lavender-dark text-indigo-brand;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-indigo-brand/15;
+  }
+
+  .divider-white {
+    @apply border-t border-white/20;
+  }
+
+  /* Section containers */
+  .container-site {
+    @apply max-w-7xl mx-auto px-6 md:px-10 lg:px-16;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+}
