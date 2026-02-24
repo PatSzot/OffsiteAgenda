@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Session, SessionType } from "@/data/agenda";
 
 const typeConfig: Record<SessionType, { label: string; color: string }> = {
@@ -86,10 +87,12 @@ export function SessionCard({ session }: SessionCardProps) {
           {session.speakers.map((speaker) => (
             <div key={speaker.name} className="flex items-center gap-2">
               {speaker.avatar ? (
-                <img
+                <Image
                   src={speaker.avatar}
                   alt={speaker.name}
-                  className="w-7 h-7 rounded-full object-cover"
+                  width={28}
+                  height={28}
+                  className="rounded-full object-cover"
                 />
               ) : (
                 <div
