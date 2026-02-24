@@ -91,6 +91,7 @@
 
   h1 {
     @apply font-display;
+    font-variation-settings: "BLED" 0, "SCAN" 0;
   }
 
   h2, h3 {
