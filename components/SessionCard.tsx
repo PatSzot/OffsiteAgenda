@@ -2,14 +2,14 @@ import Image from "next/image";
 import type { Session, SessionType } from "@/data/agenda";
 
 const typeConfig: Record<SessionType, { label: string; color: string }> = {
-  keynote:  { label: "Keynote",  color: "bg-green-600 text-white" },
-  talk:     { label: "Talk",     color: "bg-green-500 text-white" },
-  workshop: { label: "Workshop", color: "bg-green-500/80 text-white" },
-  panel:    { label: "Panel",    color: "bg-green-500/60 text-white" },
-  break:    { label: "Break",    color: "bg-accent-label text-near-black" },
-  meal:     { label: "Meal",     color: "bg-accent-label text-near-black" },
-  social:   { label: "Social",   color: "bg-accent-label text-near-black" },
-  travel:   { label: "Travel",   color: "bg-accent-label text-near-black" },
+  keynote:  { label: "Keynote",  color: "bg-cobalt text-white" },
+  talk:     { label: "Talk",     color: "bg-cobalt-light text-white" },
+  workshop: { label: "Workshop", color: "bg-cobalt-light/80 text-white" },
+  panel:    { label: "Panel",    color: "bg-cobalt-light/60 text-white" },
+  break:    { label: "Break",    color: "bg-lavender-dark text-indigo-brand" },
+  meal:     { label: "Meal",     color: "bg-lavender-dark text-indigo-brand" },
+  social:   { label: "Social",   color: "bg-lavender-dark text-indigo-brand" },
+  travel:   { label: "Travel",   color: "bg-lavender-dark text-indigo-brand" },
 };
 
 interface SessionCardProps {
@@ -23,14 +23,14 @@ export function SessionCard({ session }: SessionCardProps) {
   if (isUtility && !session.highlight) {
     // Compact row for meals, breaks, travel
     return (
-      <div className="flex items-center gap-4 py-4 px-5 bg-green-50 border border-stroke-green group">
-        <time className="font-mono text-label-lg text-near-black/50 w-14 shrink-0">
+      <div className="flex items-center gap-4 py-4 px-5 bg-lavender border border-indigo-brand/15 group">
+        <time className="font-mono text-label-lg text-indigo-brand/50 w-14 shrink-0">
           {session.time}
         </time>
-        <span className="flex-1 font-sans text-body-sm text-near-black/70">{session.title}</span>
+        <span className="flex-1 font-sans text-body-sm text-indigo-brand/70">{session.title}</span>
         <span className={`badge ${config.color} text-label-sm`}>{config.label}</span>
         {session.location && (
-          <span className="font-mono text-label-sm text-near-black/40 hidden sm:inline">
+          <span className="font-mono text-label-sm text-indigo-brand/40 hidden sm:inline">
             {session.location}
           </span>
         )}
@@ -44,8 +44,8 @@ export function SessionCard({ session }: SessionCardProps) {
       className={`
         group p-6 md:p-8 border transition-shadow hover:shadow-md
         ${session.highlight
-          ? "bg-green-600 border-green-600 text-white"
-          : "bg-white border-stroke-green text-near-black"
+          ? "bg-cobalt border-cobalt text-white"
+          : "bg-white border-indigo-brand/15 text-indigo-brand"
         }
       `}
     >
@@ -53,7 +53,7 @@ export function SessionCard({ session }: SessionCardProps) {
         <time
           className={`
             font-mono text-label-lg uppercase tracking-widest
-            ${session.highlight ? "text-white/60" : "text-near-black/50"}
+            ${session.highlight ? "text-white/60" : "text-indigo-brand/50"}
           `}
         >
           {session.time}
@@ -67,7 +67,7 @@ export function SessionCard({ session }: SessionCardProps) {
       <h3
         className={`
           text-display-md font-serif mb-3 leading-tight
-          ${session.highlight ? "text-white" : "text-near-black"}
+          ${session.highlight ? "text-white" : "text-indigo-brand"}
         `}
       >
         {session.title}
@@ -77,7 +77,7 @@ export function SessionCard({ session }: SessionCardProps) {
         <p
           className={`
             text-body-md mb-5
-            ${session.highlight ? "text-white/70" : "text-near-black/70"}
+            ${session.highlight ? "text-white/70" : "text-indigo-brand/70"}
           `}
         >
           {session.description}
@@ -101,7 +101,7 @@ export function SessionCard({ session }: SessionCardProps) {
                 <div
                   className={`
                     w-7 h-7 rounded-full flex items-center justify-center font-mono text-label-sm
-                    ${session.highlight ? "bg-white/20 text-white" : "bg-green-100 text-near-black"}
+                    ${session.highlight ? "bg-white/20 text-white" : "bg-lavender-dark text-indigo-brand"}
                   `}
                 >
                   {speaker.name[0]}
@@ -111,7 +111,7 @@ export function SessionCard({ session }: SessionCardProps) {
                 <p
                   className={`
                     font-sans text-body-sm font-medium leading-none mb-0.5
-                    ${session.highlight ? "text-white" : "text-near-black"}
+                    ${session.highlight ? "text-white" : "text-indigo-brand"}
                   `}
                 >
                   {speaker.name}
@@ -120,7 +120,7 @@ export function SessionCard({ session }: SessionCardProps) {
                   <p
                     className={`
                       font-mono text-label-sm
-                      ${session.highlight ? "text-white/50" : "text-near-black/50"}
+                      ${session.highlight ? "text-white/50" : "text-indigo-brand/50"}
                     `}
                   >
                     {speaker.title}
@@ -137,7 +137,7 @@ export function SessionCard({ session }: SessionCardProps) {
         <div
           className={`
             mt-5 pt-4 flex items-center gap-2 font-mono text-label-sm
-            ${session.highlight ? "border-t border-white/20 text-white/50" : "border-t border-stroke-green text-near-black/50"}
+            ${session.highlight ? "border-t border-white/20 text-white/50" : "border-t border-indigo-brand/15 text-indigo-brand/50"}
           `}
         >
           <PinIcon />

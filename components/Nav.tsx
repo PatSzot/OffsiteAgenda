@@ -13,7 +13,7 @@ export function Nav() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-stroke-green">
+    <header className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-indigo-brand/15">
       <nav className="container-site flex items-center justify-between h-16">
         {/* Wordmark / logo slot */}
         <Link
@@ -42,8 +42,8 @@ export function Nav() {
                   className={`
                     px-4 py-2 font-mono text-label-lg uppercase tracking-widest transition-colors
                     ${active
-                      ? "bg-near-black text-white"
-                      : "text-near-black hover:bg-green-100"
+                      ? "bg-cobalt text-white"
+                      : "text-indigo-brand hover:bg-lavender"
                     }
                   `}
                 >

@@ -54,26 +54,15 @@
 
 /* ─── CSS Custom Properties ─────────────────────────────────────────────── */
 :root {
-  /* AirOps brand color tokens */
-  --white: #ffffff;
-  --off-white: #F8FFFA;
-  --near-black: #000d05;
-
-  --green-50: #f8fffb;
-  --green-100: #dfeae3;
-  --green-200: #CCFFE0;
-  --green-500: #008c44;
-  --green-600: #002910;
-
-  --interaction: #00ff64;
-  --accent-label: #EEFF8C;
-
-  --text-primary: #09090b;
-  --text-secondary: #676c79;
-  --text-tertiary: #a5aab6;
-
-  --stroke-primary: #ecedef;
-  --stroke-green: #d4e8da;
+  /* AirOps offsite blue color tokens */
+  --color-cobalt: #1B1DB5;
+  --color-cobalt-dark: #14169A;
+  --color-cobalt-light: #2426CC;
+  --color-lavender: #EAEAF5;
+  --color-lavender-dark: #D8D8EE;
+  --color-indigo: #2323A5;
+  --color-white: #FFFFFF;
+  --color-black: #0D0D0D;
 
   --font-sans: "Saans", "Helvetica Neue", sans-serif;
   --font-serif: "Serrif VF", Georgia, serif;
@@ -89,7 +78,7 @@
   }
 
   body {
-    @apply bg-off-white text-near-black font-sans;
+    @apply bg-lavender text-indigo-brand font-sans;
   }
 
   h1, h2, h3 {
@@ -97,8 +86,8 @@
   }
 
   ::selection {
-    background-color: var(--interaction);
-    color: var(--near-black);
+    background-color: var(--color-cobalt);
+    color: var(--color-white);
   }
 }
 
@@ -113,27 +102,30 @@
     @apply font-mono text-label-sm uppercase tracking-widest;
   }
 
-  /* Pill badge — sharp corners, accent-label fill */
+  /* Pill badge */
   .badge {
-    @apply inline-flex items-center px-3 py-1 text-label-sm font-mono uppercase tracking-widest;
-    border-radius: 0;
+    @apply inline-flex items-center px-3 py-1 rounded-full text-label-sm font-mono uppercase tracking-widest;
   }
 
-  .badge-green {
-    @apply badge bg-accent-label text-near-black;
+  .badge-cobalt {
+    @apply badge bg-cobalt text-white;
+  }
+
+  .badge-lavender {
+    @apply badge bg-lavender-dark text-indigo-brand;
   }
 
   .badge-dark {
-    @apply badge bg-near-black text-white;
+    @apply badge bg-cobalt-dark text-white;
   }
 
   .badge-muted {
-    @apply badge bg-green-100 text-near-black;
+    @apply badge bg-lavender-dark text-indigo-brand;
   }
 
   /* Divider */
   .divider {
-    @apply border-t border-stroke-green;
+    @apply border-t border-indigo-brand/15;
   }
 
   .divider-white {
