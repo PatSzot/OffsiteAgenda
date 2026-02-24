@@ -22,12 +22,12 @@ export function Nav() {
           aria-label="AirOps Lisbon 2026 — home"
         >
           <Image
-            src="/logo.svg"
+            src="/OffsiteLogo.png"
             alt="AirOps Offsite"
-            width={120}
-            height={32}
+            width={160}
+            height={40}
             priority
-            className="h-8 w-auto"
+            className="h-10 w-auto"
           />
         </Link>
 
