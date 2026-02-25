@@ -1,4 +1,7 @@
-import Image from "next/image";
+"use client";
+
+import Lottie from "lottie-react";
+import animationData from "@/public/OffsiteLogo.json";
 import { agenda } from "@/data/agenda";
 
 export function Hero() {
@@ -6,12 +9,10 @@ export function Hero() {
     <section className="min-h-screen bg-lavender flex flex-col pt-16">
       {/* Full-bleed wordmark */}
       <div className="w-full">
-        <Image
-          src="/OffsiteLogo.png"
-          alt="AirOps Lisbon 2026"
-          width={1320}
-          height={660}
-          priority
+        <Lottie
+          animationData={animationData}
+          loop={false}
+          autoplay={true}
           className="w-full h-auto"
         />
       </div>
