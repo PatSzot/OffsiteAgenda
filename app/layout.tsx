@@ -4,10 +4,18 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "AirOps Lisbon 2026",
   description: "AirOps company offsite — Lisbon, Portugal",
+  icons: {
+    icon: "/Offsite-Favicon.png",
+  },
   openGraph: {
     title: "AirOps Lisbon 2026",
     description: "AirOps company offsite — Lisbon, Portugal",
     type: "website",
+    images: [
+      {
+        url: "/Offsite-OpenGraph.jpg",
+      },
+    ],
   },
 };
 
