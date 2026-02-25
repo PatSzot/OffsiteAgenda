@@ -12,7 +12,7 @@ export default function AgendaPage() {
 
   return (
     <>
-      <Nav />
+      <Nav variant="dark" />
 
       {/* Page hero — full bleed */}
       <div className="bg-cobalt pt-32 pb-16 px-8 md:px-12 lg:px-16">
