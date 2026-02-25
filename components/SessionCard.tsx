@@ -23,7 +23,7 @@ export function SessionCard({ session }: SessionCardProps) {
   if (isUtility && !session.highlight) {
     // Compact row for meals, breaks, travel
     return (
-      <div className="flex items-center gap-4 py-4 px-5 bg-white border border-[#1B1B8F]/15 group">
+      <div className="flex items-center gap-4 py-4 px-5 bg-white border border-lavender-dark group">
         <time className="font-mono text-label-lg text-[#1B1B8F]/50 w-14 shrink-0">
           {session.time}
         </time>
@@ -40,22 +40,9 @@ export function SessionCard({ session }: SessionCardProps) {
 
   // Full card for talks, keynotes, workshops, panels, highlighted sessions
   return (
-    <article
-      className={`
-        group p-6 md:p-8 border transition-shadow hover:shadow-md
-        ${session.highlight
-          ? "bg-[#1B1B8F] border-[#1B1B8F] text-white"
-          : "bg-white border-[#1B1B8F]/15 text-[#1B1B8F]"
-        }
-      `}
-    >
+    <article className="group p-6 md:p-8 bg-white border border-lavender-dark transition-shadow hover:shadow-md">
       <div className="flex items-start justify-between gap-4 mb-4">
-        <time
-          className={`
-            font-mono text-label-lg uppercase tracking-widest
-            ${session.highlight ? "text-white/60" : "text-[#1B1B8F]/50"}
-          `}
-        >
+        <time className="font-mono text-label-lg uppercase tracking-widest text-[#1B1B8F]/50">
           {session.time}
           {session.endTime && (
             <span className="hidden sm:inline"> – {session.endTime}</span>
@@ -64,22 +51,12 @@ export function SessionCard({ session }: SessionCardProps) {
         <span className={`badge ${config.color}`}>{config.label}</span>
       </div>
 
-      <h3
-        className={`
-          text-display-md font-serif mb-3 leading-tight
-          ${session.highlight ? "text-white" : "text-[#1B1B8F]"}
-        `}
-      >
+      <h3 className="text-display-md font-serif mb-3 leading-tight text-[#1B1B8F]">
         {session.title}
       </h3>
 
       {session.description && (
-        <p
-          className={`
-            text-body-md mb-5
-            ${session.highlight ? "text-white/70" : "text-[#1B1B8F]/70"}
-          `}
-        >
+        <p className="text-body-md mb-5 text-[#1B1B8F]/70">
           {session.description}
         </p>
       )}
@@ -98,31 +75,16 @@ export function SessionCard({ session }: SessionCardProps) {
                   className="rounded-full object-cover"
                 />
               ) : (
-                <div
-                  className={`
-                    w-7 h-7 rounded-full flex items-center justify-center font-mono text-label-sm
-                    ${session.highlight ? "bg-white/20 text-white" : "bg-[#1B1B8F]/10 text-[#1B1B8F]"}
-                  `}
-                >
+                <div className="w-7 h-7 rounded-full flex items-center justify-center font-mono text-label-sm bg-lavender-dark text-[#1B1B8F]">
                   {speaker.name[0]}
                 </div>
               )}
               <div>
-                <p
-                  className={`
-                    font-sans text-body-sm font-medium leading-none mb-0.5
-                    ${session.highlight ? "text-white" : "text-[#1B1B8F]"}
-                  `}
-                >
+                <p className="font-sans text-body-sm font-medium leading-none mb-0.5 text-[#1B1B8F]">
                   {speaker.name}
                 </p>
                 {speaker.title && (
-                  <p
-                    className={`
-                      font-mono text-label-sm
-                      ${session.highlight ? "text-white/50" : "text-[#1B1B8F]/50"}
-                    `}
-                  >
+                  <p className="font-mono text-label-sm text-[#1B1B8F]/50">
                     {speaker.title}
                   </p>
                 )}
@@ -134,12 +96,7 @@ export function SessionCard({ session }: SessionCardProps) {
 
       {/* Location */}
       {session.location && (
-        <div
-          className={`
-            mt-5 pt-4 flex items-center gap-2 font-mono text-label-sm
-            ${session.highlight ? "border-t border-white/20 text-white/50" : "border-t border-[#1B1B8F]/15 text-[#1B1B8F]/50"}
-          `}
-        >
+        <div className="mt-5 pt-4 flex items-center gap-2 font-mono text-label-sm border-t border-lavender-dark text-[#1B1B8F]/50">
           <PinIcon />
           {session.location}
         </div>
