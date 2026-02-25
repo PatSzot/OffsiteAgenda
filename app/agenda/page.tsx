@@ -13,76 +13,70 @@ export default function AgendaPage() {
     <>
       <Nav />
 
-      {/* Page hero */}
-      <div className="bg-cobalt pt-32 pb-16">
-        <div className="container-site">
-          <p className="label text-white/50 mb-4">{agenda.eventName}</p>
-          <h1 className="text-display-xl font-display text-white mb-2">Agenda</h1>
-          <p className="font-sans text-body-lg text-white/60">{agenda.dates} — {agenda.location}</p>
-        </div>
+      {/* Page hero — full bleed */}
+      <div className="bg-cobalt pt-32 pb-16 px-8 md:px-12 lg:px-16">
+        <p className="label text-white/50 mb-4">{agenda.eventName}</p>
+        <h1 className="text-display-xl font-display text-white mb-2">Agenda</h1>
+        <p className="font-sans text-body-lg text-white/60">{agenda.dates} — {agenda.location}</p>
       </div>
 
-      {/* Sticky day tabs */}
+      {/* Sticky day tabs — full bleed */}
       <div className="sticky top-16 z-40 bg-white/95 backdrop-blur-md border-b border-indigo-brand/15">
-        <div className="container-site">
-          <div className="flex gap-1 py-3 overflow-x-auto scrollbar-none" role="tablist" aria-label="Days">
-            {agenda.days.map((d) => (
-              <button
-                key={d.id}
-                role="tab"
-                aria-selected={d.id === activeDay}
-                aria-controls={`panel-${d.id}`}
-                onClick={() => setActiveDay(d.id)}
+        <div className="flex gap-0 overflow-x-auto scrollbar-none divide-x divide-indigo-brand/15" role="tablist" aria-label="Days">
+          {agenda.days.map((d) => (
+            <button
+              key={d.id}
+              role="tab"
+              aria-selected={d.id === activeDay}
+              aria-controls={`panel-${d.id}`}
+              onClick={() => setActiveDay(d.id)}
+              className={`
+                shrink-0 px-8 py-4 font-mono text-label-lg uppercase tracking-widest transition-colors
+                ${d.id === activeDay
+                  ? "bg-cobalt text-white"
+                  : "text-indigo-brand hover:bg-lavender"
+                }
+              `}
+            >
+              {d.label}
+              <span
                 className={`
-                  shrink-0 px-5 py-2.5 font-mono text-label-lg uppercase tracking-widest transition-colors
-                  ${d.id === activeDay
-                    ? "bg-cobalt text-white"
-                    : "text-indigo-brand hover:bg-lavender"
-                  }
+                  ml-2 hidden sm:inline font-sans normal-case tracking-normal text-body-sm
+                  ${d.id === activeDay ? "text-white/60" : "text-indigo-brand/40"}
                 `}
               >
-                {d.label}
-                <span
-                  className={`
-                    ml-2 hidden sm:inline font-sans normal-case tracking-normal text-body-sm
-                    ${d.id === activeDay ? "text-white/60" : "text-indigo-brand/40"}
-                  `}
-                >
-                  {d.date}
-                </span>
-              </button>
-            ))}
-          </div>
+                {d.date}
+              </span>
+            </button>
+          ))}
         </div>
       </div>
 
       {/* Day panel */}
-      <main className="bg-lavender section" id={`panel-${day.id}`} role="tabpanel">
-        <div className="container-site">
-          {/* Day header */}
-          <div className="mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-            <div>
-              <p className="label text-cobalt mb-2">{day.label} — {day.date}</p>
-              {day.theme && (
-                <h2 className="text-display-lg font-serif text-indigo-brand">{day.theme}</h2>
-              )}
-            </div>
-            {day.location && (
-              <p className="font-mono text-label-sm text-indigo-brand/50 flex items-center gap-1.5">
-                <PinIcon />
-                {day.location}
-              </p>
+      <main className="bg-lavender" id={`panel-${day.id}`} role="tabpanel">
+        {/* Day header — full bleed */}
+        <div className="border-b border-indigo-brand/15 px-8 md:px-12 lg:px-16 py-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <p className="label text-cobalt mb-2">{day.label} — {day.date}</p>
+            {day.theme && (
+              <h2 className="text-display-lg font-serif text-indigo-brand">{day.theme}</h2>
             )}
           </div>
+          {day.location && (
+            <p className="font-mono text-label-sm text-indigo-brand/50 flex items-center gap-1.5">
+              <PinIcon />
+              {day.location}
+            </p>
+          )}
+        </div>
 
-          {/* Sessions */}
-          <div className="flex flex-col gap-4">
-            {day.sessions.map((session) => (
-              <div key={session.id} id={session.id} className="animate-slide-up">
-                <SessionCard session={session} />
-              </div>
-            ))}
-          </div>
+        {/* Sessions */}
+        <div className="px-8 md:px-12 lg:px-16 py-12 flex flex-col gap-4">
+          {day.sessions.map((session) => (
+            <div key={session.id} id={session.id} className="animate-slide-up">
+              <SessionCard session={session} />
+            </div>
+          ))}
 
           {day.sessions.length === 0 && (
             <div className="text-center py-24">

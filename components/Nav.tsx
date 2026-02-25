@@ -26,11 +26,9 @@ export function Nav() {
           Home
         </Link>
 
-        <div className="mx-2 h-6 w-px bg-indigo-brand/15" />
-
         <Link
           href="/"
-          className="mx-2 flex items-center justify-center"
+          className="mx-3 flex items-center justify-center"
           aria-label="AirOps Offsite — home"
         >
           <Image
@@ -42,8 +40,6 @@ export function Nav() {
             className="h-8 w-auto"
           />
         </Link>
-
-        <div className="mx-2 h-6 w-px bg-indigo-brand/15" />
 
         <Link href="/agenda" className={linkClass("/agenda")}>
           Agenda
