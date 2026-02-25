@@ -21,7 +21,7 @@ export default function AgendaPage() {
       </div>
 
       {/* Sticky day tabs — full bleed */}
-      <div className="sticky top-0 z-40 bg-[#1B1B8F] border-b border-white/10">
+      <div className="sticky top-0 z-40 bg-cobalt border-b border-white/10">
         <div className="flex gap-0 overflow-x-auto scrollbar-none divide-x divide-white/10" role="tablist" aria-label="Days">
           {agenda.days.map((d) => (
             <button
@@ -33,7 +33,7 @@ export default function AgendaPage() {
               className={`
                 shrink-0 px-8 py-4 font-mono text-label-lg uppercase tracking-widest transition-colors
                 ${d.id === activeDay
-                  ? "bg-white text-[#1B1B8F]"
+                  ? "bg-white text-cobalt"
                   : "text-white/70 hover:text-white hover:bg-white/10"
                 }
               `}
@@ -42,7 +42,7 @@ export default function AgendaPage() {
               <span
                 className={`
                   ml-2 hidden sm:inline font-sans normal-case tracking-normal text-body-sm
-                  ${d.id === activeDay ? "text-[#1B1B8F]/60" : "text-white/40"}
+                  ${d.id === activeDay ? "text-cobalt/60" : "text-white/40"}
                 `}
               >
                 {d.date}
