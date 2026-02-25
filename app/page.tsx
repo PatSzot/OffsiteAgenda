@@ -26,27 +26,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Day previews — full bleed editorial grid */}
-        <section className="bg-lavender border-b border-indigo-brand/15">
-          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-indigo-brand/15">
-            {agenda.days.map((day, i) => (
-              <a
-                key={day.id}
-                href={`/agenda#${day.id}`}
-                className="group block px-8 md:px-12 py-12 md:py-16 hover:bg-lavender-dark transition-colors border-t-4 border-t-cobalt"
-              >
-                <p className="label text-cobalt mb-4">{day.label}</p>
-                <h2 className="font-serif text-display-md text-indigo-brand mb-3 group-hover:text-cobalt transition-colors">
-                  {day.theme ?? `Day ${i + 1}`}
-                </h2>
-                <p className="font-mono text-label-sm text-indigo-brand/50 mb-10">{day.date}</p>
-                <p className="font-sans text-body-sm text-indigo-brand/40">
-                  {day.sessions.length} sessions
-                </p>
-              </a>
-            ))}
-          </div>
-        </section>
+
       </main>
 
       <Footer />
