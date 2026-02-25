@@ -7,9 +7,10 @@ import { useState } from "react";
 
 interface NavProps {
   variant?: "light" | "dark";
+  fixed?: boolean;
 }
 
-export function Nav({ variant = "light" }: NavProps) {
+export function Nav({ variant = "light", fixed = true }: NavProps) {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -35,7 +36,7 @@ export function Nav({ variant = "light" }: NavProps) {
   ];
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-transparent">
+    <header className={`${fixed ? "fixed top-0 inset-x-0 z-50" : "relative"} bg-transparent`}>
       <nav
         className="flex items-center justify-between px-6 md:px-10 lg:px-16 h-16"
         aria-label="Primary navigation"

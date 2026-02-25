@@ -12,17 +12,17 @@ export default function AgendaPage() {
 
   return (
     <>
-      <Nav variant="dark" />
+      <Nav variant="dark" fixed={false} />
 
       {/* Page hero — full bleed */}
-      <div className="bg-cobalt pt-32 pb-16 px-8 md:px-12 lg:px-16">
+      <div className="bg-cobalt pt-16 pb-16 px-8 md:px-12 lg:px-16">
         <p className="label text-white/50 mb-4">{agenda.eventName}</p>
         <h1 className="text-display-xl font-display text-white mb-2">Agenda</h1>
         <p className="font-sans text-body-lg text-white/60">{agenda.dates} — {agenda.location}</p>
       </div>
 
       {/* Sticky day tabs — full bleed */}
-      <div className="sticky top-16 z-40 bg-white/95 backdrop-blur-md border-b border-indigo-brand/15">
+      <div className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-indigo-brand/15">
         <div className="flex gap-0 overflow-x-auto scrollbar-none divide-x divide-indigo-brand/15" role="tablist" aria-label="Days">
           {agenda.days.map((d) => (
             <button
