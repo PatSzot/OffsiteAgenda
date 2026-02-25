@@ -91,7 +91,7 @@
 
   h1 {
     @apply font-display;
-    font-variation-settings: "BLED" 0, "SCAN" 0;
+    font-variation-settings: "BLED" 0, "SCAN" 21;
   }
 
   h2, h3 {
