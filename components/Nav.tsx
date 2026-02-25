@@ -36,7 +36,7 @@ export function Nav({ variant = "light", fixed = true }: NavProps) {
   ];
 
   return (
-    <header className={`${fixed ? "fixed top-0 inset-x-0 z-50" : "relative"} bg-transparent`}>
+    <header className={`${fixed ? "fixed top-0 inset-x-0 z-50" : "relative"} ${isDark ? "bg-cobalt" : "bg-transparent"}`}>
       <nav
         className="flex items-center justify-between px-6 md:px-10 lg:px-16 h-16"
         aria-label="Primary navigation"
