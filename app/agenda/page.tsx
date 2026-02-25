@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Nav } from "@/components/Nav";
 import { SessionCard } from "@/components/SessionCard";
+import { Footer } from "@/components/Footer";
 import { agenda } from "@/data/agenda";
 
 export default function AgendaPage() {
@@ -88,14 +89,7 @@ export default function AgendaPage() {
         </div>
       </main>
 
-      <footer className="bg-cobalt text-white py-12">
-        <div className="container-site flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <p className="font-mono text-label-sm text-white/40 uppercase tracking-widest">
-            {agenda.eventName}
-          </p>
-          <p className="font-mono text-label-sm text-white/30">{agenda.location}</p>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }
