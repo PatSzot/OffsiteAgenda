@@ -47,11 +47,10 @@ const C = {
 };
 
 const s = StyleSheet.create({
-  coverPage:    { backgroundColor: C.cobalt, flexDirection: "column", justifyContent: "space-between" },
+  coverPage:    { backgroundColor: C.cobalt, flexDirection: "column", justifyContent: "space-between", paddingHorizontal: 36, paddingVertical: 36 },
   contentPage:  { backgroundColor: C.lavender, padding: 0 },
 
-  coverLogo:    { width: "100%" },
-  coverBottom:  { paddingHorizontal: 48, paddingBottom: 48 },
+  coverLogo:    { width: 200 },
   coverDates:   { fontFamily: "Serrif", fontSize: 36, color: C.white, marginBottom: 8 },
   coverMeta:    { fontFamily: "SaansMono", fontSize: 9, color: "#FFFFFF60", letterSpacing: 1.5, textTransform: "uppercase" },
 
@@ -99,7 +98,7 @@ function Cover({ logoSrc }: { logoSrc: string }) {
   return (
     <Page size="A4" style={s.coverPage}>
       <Image src={logoSrc} style={s.coverLogo} />
-      <View style={s.coverBottom}>
+      <View>
         <Text style={s.coverDates}>April 22–26</Text>
         <Text style={s.coverMeta}>Lisbon, Portugal  ·  Lisbon Marriott Hotel</Text>
       </View>
