@@ -2,6 +2,21 @@
 
 import { useState } from "react";
 
+async function toWhitePng(src: string): Promise<string> {
+  const img = new window.Image();
+  img.crossOrigin = "anonymous";
+  await new Promise<void>((res, rej) => { img.onload = () => res(); img.onerror = rej; img.src = src; });
+  const canvas = document.createElement("canvas");
+  canvas.width = img.naturalWidth;
+  canvas.height = img.naturalHeight;
+  const ctx = canvas.getContext("2d")!;
+  ctx.drawImage(img, 0, 0);
+  ctx.globalCompositeOperation = "source-in";
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  return canvas.toDataURL("image/png");
+}
+
 async function downloadPdf() {
   const [{ pdf }, { OffsitePdf }, React] = await Promise.all([
     import("@react-pdf/renderer"),
@@ -9,7 +24,7 @@ async function downloadPdf() {
     import("react"),
   ]);
 
-  const logoSrc = `${window.location.origin}/OffsiteLogo.png`;
+  const logoSrc = await toWhitePng(`${window.location.origin}/OffsiteLogo.png`);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const blob = await pdf(React.createElement(OffsitePdf, { logoSrc }) as any).toBlob();
   const url = URL.createObjectURL(blob);
