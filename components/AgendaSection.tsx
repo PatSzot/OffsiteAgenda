@@ -7,31 +7,32 @@ import { agenda } from "@/data/agenda";
 export function AgendaSection() {
   const [activeDay, setActiveDay] = useState(agenda.days[0].id);
   const dayRefs = useRef<Record<string, HTMLElement | null>>({});
+  const tabsRef = useRef<HTMLDivElement | null>(null);
 
-  // Update active tab based on scroll position
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+    const handleScroll = () => {
+      const tabsBottom = tabsRef.current?.getBoundingClientRect().bottom ?? 0;
+      let current = agenda.days[0].id;
+      for (const day of agenda.days) {
+        const el = dayRefs.current[day.id];
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= tabsBottom + 1) {
+          current = day.id;
+        }
+      }
+      setActiveDay(current);
+    };
 
-    agenda.days.forEach((day) => {
-      const el = dayRefs.current[day.id];
-      if (!el) return;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveDay(day.id);
-        },
-        { rootMargin: "-40% 0px -55% 0px" }
-      );
-
-      observer.observe(el);
-      observers.push(observer);
-    });
-
-    return () => observers.forEach((o) => o.disconnect());
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToDay = (id: string) => {
-    dayRefs.current[id]?.scrollIntoView({ behavior: "smooth" });
+    const el = dayRefs.current[id];
+    if (!el) return;
+    const tabsHeight = tabsRef.current?.getBoundingClientRect().height ?? 0;
+    const top = el.getBoundingClientRect().top + window.scrollY - tabsHeight;
+    window.scrollTo({ top, behavior: "smooth" });
   };
 
   return (
@@ -42,7 +43,7 @@ export function AgendaSection() {
       </div>
 
       {/* Sticky day tabs */}
-      <div className="sticky top-0 z-40 bg-cobalt border-b border-white/10">
+      <div ref={tabsRef} className="sticky top-0 z-40 bg-cobalt border-b border-white/10">
         <div className="flex gap-0 overflow-x-auto scrollbar-none divide-x divide-white/10" role="tablist" aria-label="Days">
           {agenda.days.map((d) => (
             <button
