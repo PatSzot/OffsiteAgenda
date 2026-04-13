@@ -1,3 +1,10 @@
+import dynamic from "next/dynamic";
+
+const LeafletMap = dynamic(
+  () => import("@/components/LeafletMap").then((m) => m.LeafletMap),
+  { ssr: false }
+);
+
 const locations = [
   {
     id: "airport",
@@ -33,16 +40,9 @@ export function MapSection() {
     <section className="bg-cobalt">
       {/* Map */}
       <div className="relative w-full h-[480px] overflow-hidden">
-        <iframe
-          title="Lisbon key locations"
-          src="https://maps.google.com/maps?q=Lisbon+Marriott+Hotel,Lisboa,Portugal&t=&z=12&ie=UTF8&iwloc=&output=embed"
-          className="absolute inset-0 w-full h-full border-0"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          style={{ filter: "grayscale(1) contrast(1.05) brightness(0.85)" }}
-        />
+        <LeafletMap />
         {/* Cobalt tint overlay */}
-        <div className="absolute inset-0 bg-cobalt/30 mix-blend-multiply pointer-events-none" />
+        <div className="absolute inset-0 bg-cobalt/20 mix-blend-multiply pointer-events-none" />
 
         {/* Taxi callout — top right */}
         <div className="absolute top-6 right-6 bg-cobalt text-white px-5 py-4 shadow-lg max-w-[220px]">
