@@ -47,12 +47,13 @@ const C = {
 };
 
 const s = StyleSheet.create({
-  coverPage:    { backgroundColor: "#0000FF", flexDirection: "column" },
+  coverPage:    { backgroundColor: C.cobalt, flexDirection: "column", justifyContent: "space-between" },
   contentPage:  { backgroundColor: C.lavender, padding: 0 },
 
   coverLogo:    { width: "100%" },
-  coverDates:   { fontFamily: "Serrif", fontSize: 36, color: C.white, paddingHorizontal: 48, paddingTop: 20 },
-  coverMeta:    { fontFamily: "SaansMono", fontSize: 9, color: "#FFFFFF60", letterSpacing: 1.5, textTransform: "uppercase", paddingHorizontal: 48, paddingTop: 10 },
+  coverBottom:  { paddingHorizontal: 48, paddingBottom: 48 },
+  coverDates:   { fontFamily: "Serrif", fontSize: 36, color: C.white, marginBottom: 8 },
+  coverMeta:    { fontFamily: "SaansMono", fontSize: 9, color: "#FFFFFF60", letterSpacing: 1.5, textTransform: "uppercase" },
 
   sectionBar:   { backgroundColor: C.cobalt, paddingHorizontal: 36, paddingVertical: 20 },
   sectionTitle: { fontFamily: "Serrif", fontSize: 28, color: C.white },
@@ -98,8 +99,10 @@ function Cover({ logoSrc }: { logoSrc: string }) {
   return (
     <Page size="A4" style={s.coverPage}>
       <Image src={logoSrc} style={s.coverLogo} />
-      <Text style={s.coverDates}>April 22–26</Text>
-      <Text style={s.coverMeta}>Lisbon, Portugal  ·  Lisbon Marriott Hotel</Text>
+      <View style={s.coverBottom}>
+        <Text style={s.coverDates}>April 22–26</Text>
+        <Text style={s.coverMeta}>Lisbon, Portugal  ·  Lisbon Marriott Hotel</Text>
+      </View>
     </Page>
   );
 }
