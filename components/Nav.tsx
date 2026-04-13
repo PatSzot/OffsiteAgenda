@@ -32,6 +32,7 @@ export function Nav({ variant = "light", fixed = true }: NavProps) {
 
   const links = [
     { href: "/", label: "Home" },
+    { href: "/faq", label: "FAQ" },
   ];
 
   return (
