@@ -2,60 +2,20 @@
 
 import { useState } from "react";
 
-async function captureAndDownload() {
-  const html2canvas = (await import("html2canvas")).default;
+async function downloadPdf() {
+  const [{ pdf }, { OffsitePdf }, React] = await Promise.all([
+    import("@react-pdf/renderer"),
+    import("@/components/OffsitePdf"),
+    import("react"),
+  ]);
 
-  // Temporarily expand all accordions so content is visible
-  const buttons = document.querySelectorAll<HTMLButtonElement>("[aria-expanded]");
-  const prevStates: boolean[] = [];
-  buttons.forEach((btn) => {
-    prevStates.push(btn.getAttribute("aria-expanded") === "true");
-    btn.setAttribute("aria-expanded", "true");
-    btn.click();
-  });
-
-  // Small wait for DOM to update
-  await new Promise((r) => setTimeout(r, 200));
-
-  const canvas = await html2canvas(document.body, {
-    scale: 2,
-    useCORS: true,
-    logging: false,
-    ignoreElements: (el) =>
-      el.classList.contains("leaflet-tile-pane") ||
-      el.classList.contains("leaflet-control-container"),
-  });
-
-  // Restore accordion state
-  buttons.forEach((btn, i) => {
-    if (!prevStates[i]) btn.click();
-  });
-
-  // Split into ~A4-ish chunks at 2x scale so each is phone-readable
-  const MAX_HEIGHT = 14000;
-  const total = canvas.height;
-  const numParts = Math.ceil(total / MAX_HEIGHT);
-
-  for (let i = 0; i < numParts; i++) {
-    const srcY = i * MAX_HEIGHT;
-    const partH = Math.min(MAX_HEIGHT, total - srcY);
-
-    const part = document.createElement("canvas");
-    part.width = canvas.width;
-    part.height = partH;
-    const ctx = part.getContext("2d")!;
-    ctx.drawImage(canvas, 0, srcY, canvas.width, partH, 0, 0, canvas.width, partH);
-
-    const link = document.createElement("a");
-    link.download = numParts === 1
-      ? "lisbon-offsite.png"
-      : `lisbon-offsite-${i + 1}-of-${numParts}.png`;
-    link.href = part.toDataURL("image/png");
-    link.click();
-
-    // stagger to avoid browser blocking multiple downloads
-    if (i < numParts - 1) await new Promise((r) => setTimeout(r, 400));
-  }
+  const blob = await pdf(React.createElement(OffsitePdf)).toBlob();
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "lisbon-offsite-2026.pdf";
+  link.click();
+  URL.revokeObjectURL(url);
 }
 
 export function DownloadButton() {
@@ -64,7 +24,7 @@ export function DownloadButton() {
   const handleClick = async () => {
     setStatus("loading");
     try {
-      await captureAndDownload();
+      await downloadPdf();
     } finally {
       setStatus("idle");
     }
@@ -85,7 +45,7 @@ export function DownloadButton() {
       ) : (
         <>
           <DownloadIcon />
-          Download as Image
+          Download site as .PDF
         </>
       )}
     </button>
