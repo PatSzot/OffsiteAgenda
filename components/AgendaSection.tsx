@@ -1,7 +1,39 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { SessionCard } from "@/components/SessionCard";
 import { agenda } from "@/data/agenda";
 
 export function AgendaSection() {
+  const [activeDay, setActiveDay] = useState(agenda.days[0].id);
+  const dayRefs = useRef<Record<string, HTMLElement | null>>({});
+
+  // Update active tab based on scroll position
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    agenda.days.forEach((day) => {
+      const el = dayRefs.current[day.id];
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveDay(day.id);
+        },
+        { rootMargin: "-40% 0px -55% 0px" }
+      );
+
+      observer.observe(el);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+
+  const scrollToDay = (id: string) => {
+    dayRefs.current[id]?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section>
       {/* Section header */}
@@ -9,9 +41,45 @@ export function AgendaSection() {
         <h2 className="font-serif text-display-lg text-white">Agenda</h2>
       </div>
 
+      {/* Sticky day tabs */}
+      <div className="sticky top-0 z-40 bg-cobalt border-b border-white/10">
+        <div className="flex gap-0 overflow-x-auto scrollbar-none divide-x divide-white/10" role="tablist" aria-label="Days">
+          {agenda.days.map((d) => (
+            <button
+              key={d.id}
+              role="tab"
+              aria-selected={d.id === activeDay}
+              onClick={() => scrollToDay(d.id)}
+              className={`
+                shrink-0 px-8 py-4 font-mono text-label-lg uppercase tracking-widest transition-colors
+                ${d.id === activeDay
+                  ? "bg-white text-cobalt"
+                  : "text-white/70 hover:text-white hover:bg-white/10"
+                }
+              `}
+            >
+              {d.label}
+              <span
+                className={`
+                  ml-2 hidden sm:inline font-sans normal-case tracking-normal text-body-sm
+                  ${d.id === activeDay ? "text-cobalt/60" : "text-white/40"}
+                `}
+              >
+                {d.date}
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* All days */}
       {agenda.days.map((day) => (
-        <div key={day.id} id={day.id} className="bg-lavender border-t border-indigo-brand/15">
+        <div
+          key={day.id}
+          id={day.id}
+          ref={(el) => { dayRefs.current[day.id] = el; }}
+          className="bg-lavender border-t border-indigo-brand/15"
+        >
           {/* Day header */}
           <div className="border-b border-indigo-brand/15 px-8 md:px-12 lg:px-16 py-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
