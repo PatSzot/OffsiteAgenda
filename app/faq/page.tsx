@@ -332,7 +332,7 @@ export default function InfoFaqPage() {
         {/* Important Info */}
         <div className="border-b border-indigo-brand/15 px-8 md:px-12 lg:px-16 py-12">
           <p className="label text-indigo-brand/40 mb-8">Important Info</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {infoSections.map((section) => (
               <div key={section.id} className="bg-white border border-lavender-dark p-6 md:p-8">
                 <p className="font-mono text-label-sm text-indigo-brand/40 uppercase tracking-widest mb-1">
@@ -352,7 +352,7 @@ export default function InfoFaqPage() {
         {/* FAQs */}
         <div className="px-8 md:px-12 lg:px-16 py-12">
           <p className="label text-indigo-brand/40 mb-8">FAQs</p>
-          <div className="flex flex-col gap-3 max-w-4xl">
+          <div className="flex flex-col gap-3">
             {faqs.map((faq) => {
               const isOpen = openId === faq.id;
               return (
