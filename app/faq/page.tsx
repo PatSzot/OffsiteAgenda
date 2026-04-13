@@ -31,6 +31,27 @@ function ChevronIcon() {
 
 const infoSections = [
   {
+    id: "communication",
+    title: "Communication + Safety",
+    emoji: "📱",
+    content: (
+      <div className="space-y-4">
+        <ul className="space-y-1.5">
+          <li className="flex items-start gap-2"><Bullet />Slack: <strong>#lisbon-company-offsite-2026</strong></li>
+          <li className="flex items-start gap-2"><Bullet /><span><strong>Emergency (Portugal):</strong> 112</span></li>
+        </ul>
+        <div>
+          <p className="font-medium text-indigo-brand mb-2">If you need anything or feel unsafe:</p>
+          <ul className="space-y-1.5">
+            <li className="flex items-start gap-2"><Bullet />Kendalle: +1 916 837 2433</li>
+            <li className="flex items-start gap-2"><Bullet />Sarah: +1 602 295 7117</li>
+          </ul>
+        </div>
+        <Tip>iMessage + WhatsApp both work.</Tip>
+      </div>
+    ),
+  },
+  {
     id: "key-dates",
     title: "Key Dates",
     emoji: "🗓️",
@@ -159,27 +180,6 @@ const infoSections = [
         <li className="flex items-start gap-2"><Bullet />EU adapter 🔌</li>
         <li className="flex items-start gap-2"><Bullet />Laptop + charger</li>
       </ul>
-    ),
-  },
-  {
-    id: "communication",
-    title: "Communication + Safety",
-    emoji: "📱",
-    content: (
-      <div className="space-y-4">
-        <ul className="space-y-1.5">
-          <li className="flex items-start gap-2"><Bullet />Slack: <strong>#lisbon-company-offsite-2026</strong></li>
-          <li className="flex items-start gap-2"><Bullet /><span><strong>Emergency (Portugal):</strong> 112</span></li>
-        </ul>
-        <div>
-          <p className="font-medium text-indigo-brand mb-2">If you need anything or feel unsafe:</p>
-          <ul className="space-y-1.5">
-            <li className="flex items-start gap-2"><Bullet />Kendalle: +1 916 837 2433</li>
-            <li className="flex items-start gap-2"><Bullet />Sarah: +1 602 295 7117</li>
-          </ul>
-        </div>
-        <Tip>iMessage + WhatsApp both work.</Tip>
-      </div>
     ),
   },
 ];
