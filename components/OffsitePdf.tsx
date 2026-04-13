@@ -47,13 +47,12 @@ const C = {
 };
 
 const s = StyleSheet.create({
-  coverPage:    { backgroundColor: C.cobalt, padding: 48, flexDirection: "column", justifyContent: "space-between" },
+  coverPage:    { backgroundColor: "#0000FF", flexDirection: "column" },
   contentPage:  { backgroundColor: C.lavender, padding: 0 },
 
-  coverLogo:    { width: "100%", marginBottom: 56 },
-  coverTitle:   { fontFamily: "Serrif", fontSize: 72, color: C.white, lineHeight: 0.95, marginBottom: 10 },
-  coverSub:     { fontFamily: "Serrif", fontSize: 28, color: "#FFFFFF99" },
-  coverMeta:    { fontFamily: "SaansMono", fontSize: 9, color: "#FFFFFF60", letterSpacing: 1.5, textTransform: "uppercase" },
+  coverLogo:    { width: "100%" },
+  coverDates:   { fontFamily: "Serrif", fontSize: 36, color: C.white, paddingHorizontal: 48, paddingTop: 20 },
+  coverMeta:    { fontFamily: "SaansMono", fontSize: 9, color: "#FFFFFF60", letterSpacing: 1.5, textTransform: "uppercase", paddingHorizontal: 48, paddingTop: 10 },
 
   sectionBar:   { backgroundColor: C.cobalt, paddingHorizontal: 36, paddingVertical: 20 },
   sectionTitle: { fontFamily: "Serrif", fontSize: 28, color: C.white },
@@ -98,14 +97,9 @@ function InfoItem({ children }: { children: React.ReactNode }) {
 function Cover({ logoSrc }: { logoSrc: string }) {
   return (
     <Page size="A4" style={s.coverPage}>
-      <View>
-        <Image src={logoSrc} style={s.coverLogo} />
-        <Text style={s.coverTitle}>Lisbon{"\n"}2026</Text>
-        <Text style={s.coverSub}>April 22 – 26</Text>
-      </View>
-      <View>
-        <Text style={s.coverMeta}>Lisbon, Portugal  ·  Lisbon Marriott Hotel</Text>
-      </View>
+      <Image src={logoSrc} style={s.coverLogo} />
+      <Text style={s.coverDates}>April 22–26</Text>
+      <Text style={s.coverMeta}>Lisbon, Portugal  ·  Lisbon Marriott Hotel</Text>
     </Page>
   );
 }
