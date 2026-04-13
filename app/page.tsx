@@ -7,7 +7,7 @@ import { agenda } from "@/data/agenda";
 export default function HomePage() {
   return (
     <>
-      <Nav />
+      <Nav fixed={false} />
       <main>
         <Hero />
 

@@ -6,7 +6,7 @@ import { agenda } from "@/data/agenda";
 
 export function Hero() {
   return (
-    <section className="min-h-screen bg-lavender flex flex-col pt-16">
+    <section className="min-h-screen bg-lavender flex flex-col">
       {/* Full-bleed wordmark */}
       <div className="w-full">
         <Lottie
