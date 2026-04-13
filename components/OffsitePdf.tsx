@@ -3,6 +3,7 @@ import {
   Page,
   View,
   Text,
+  Image,
   StyleSheet,
   Font,
 } from "@react-pdf/renderer";
@@ -28,6 +29,14 @@ Font.register({
   fontWeight: 400,
 });
 
+// ─── Strip emojis ─────────────────────────────────────────────────────────────
+function strip(text: string): string {
+  return text
+    .replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{FE00}-\u{FEFF}]/gu, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 // ─── Styles ───────────────────────────────────────────────────────────────────
 const C = {
   cobalt:   "#1B1DB5",
@@ -38,53 +47,42 @@ const C = {
 };
 
 const s = StyleSheet.create({
-  // pages
-  coverPage: { backgroundColor: C.cobalt, padding: 48, flexDirection: "column", justifyContent: "space-between" },
-  contentPage: { backgroundColor: C.lavender, padding: 0 },
+  coverPage:    { backgroundColor: C.cobalt, padding: 48, flexDirection: "column", justifyContent: "space-between" },
+  contentPage:  { backgroundColor: C.lavender, padding: 0 },
 
-  // cover
-  coverEyebrow: { fontFamily: "SaansMono", fontSize: 9, color: "#FFFFFF80", letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 12 },
-  coverTitle:   { fontFamily: "Serrif", fontSize: 72, color: C.white, lineHeight: 0.95, marginBottom: 8 },
+  coverLogo:    { width: 180, marginBottom: 48, opacity: 0.9 },
+  coverTitle:   { fontFamily: "Serrif", fontSize: 72, color: C.white, lineHeight: 0.95, marginBottom: 10 },
   coverSub:     { fontFamily: "Serrif", fontSize: 28, color: "#FFFFFF99" },
   coverMeta:    { fontFamily: "SaansMono", fontSize: 9, color: "#FFFFFF60", letterSpacing: 1.5, textTransform: "uppercase" },
 
-  // section header (full bleed cobalt bar)
-  sectionBar: { backgroundColor: C.cobalt, paddingHorizontal: 36, paddingVertical: 20, marginBottom: 0 },
+  sectionBar:   { backgroundColor: C.cobalt, paddingHorizontal: 36, paddingVertical: 20 },
   sectionTitle: { fontFamily: "Serrif", fontSize: 28, color: C.white },
 
-  // day header
-  dayHeader: { paddingHorizontal: 36, paddingTop: 22, paddingBottom: 14, borderBottomWidth: 1, borderBottomColor: C.lavDark, flexDirection: "row", justifyContent: "space-between", alignItems: "flex-end" },
-  dayLabel: { fontFamily: "SaansMono", fontSize: 8, color: C.cobalt, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 4 },
-  dayTheme: { fontFamily: "Serrif", fontSize: 20, color: C.indigo, lineHeight: 1.1 },
-  dayLocation: { fontFamily: "SaansMono", fontSize: 7.5, color: "#2323A580", letterSpacing: 1 },
+  dayHeader:    { paddingHorizontal: 36, paddingTop: 22, paddingBottom: 14, borderBottomWidth: 1, borderBottomColor: C.lavDark, flexDirection: "row", justifyContent: "space-between", alignItems: "flex-end" },
+  dayLabel:     { fontFamily: "SaansMono", fontSize: 8, color: C.cobalt, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 4 },
+  dayTheme:     { fontFamily: "Serrif", fontSize: 20, color: C.indigo, lineHeight: 1.1 },
+  dayLocation:  { fontFamily: "SaansMono", fontSize: 7.5, color: "#2323A580", letterSpacing: 1 },
 
-  // session
   sessionsFull: { paddingHorizontal: 36, paddingTop: 12, paddingBottom: 4 },
-  sessionRow: { flexDirection: "row", alignItems: "flex-start", marginBottom: 10, paddingBottom: 10, borderBottomWidth: 1, borderBottomColor: C.lavDark },
-  sessionTime: { fontFamily: "SaansMono", fontSize: 8, color: "#2323A580", width: 52, letterSpacing: 0.5, paddingTop: 1 },
-  sessionBody: { flex: 1 },
+  sessionRow:   { flexDirection: "row", alignItems: "flex-start", marginBottom: 10, paddingBottom: 10, borderBottomWidth: 1, borderBottomColor: C.lavDark },
+  sessionTime:  { fontFamily: "SaansMono", fontSize: 8, color: "#2323A580", width: 52, letterSpacing: 0.5, paddingTop: 1 },
+  sessionBody:  { flex: 1 },
   sessionTitle: { fontFamily: "Saans", fontSize: 10, fontWeight: 500, color: C.indigo, marginBottom: 2 },
-  sessionDesc: { fontFamily: "Saans", fontSize: 8.5, fontWeight: 400, color: "#2323A599", lineHeight: 1.45 },
+  sessionDesc:  { fontFamily: "Saans", fontSize: 8.5, fontWeight: 400, color: "#2323A599", lineHeight: 1.45 },
   sessionBadge: { fontFamily: "SaansMono", fontSize: 7, color: C.cobalt, letterSpacing: 1, textTransform: "uppercase", marginLeft: 6, paddingHorizontal: 5, paddingVertical: 2, backgroundColor: "#1B1DB520" },
-  sessionLoc: { fontFamily: "SaansMono", fontSize: 7.5, color: "#2323A560", marginTop: 3 },
+  sessionLoc:   { fontFamily: "SaansMono", fontSize: 7.5, color: "#2323A560", marginTop: 3 },
 
-  // info section
-  infoGrid: { paddingHorizontal: 36, paddingTop: 20, paddingBottom: 8, flexDirection: "row", flexWrap: "wrap" },
-  infoCard: { width: "50%", paddingRight: 16, marginBottom: 20 },
-  infoEmoji: { fontSize: 16, marginBottom: 4 },
+  infoGrid:      { paddingHorizontal: 36, paddingTop: 20, paddingBottom: 8, flexDirection: "row", flexWrap: "wrap" },
+  infoCard:      { width: "50%", paddingRight: 16, marginBottom: 20 },
   infoCardTitle: { fontFamily: "Serrif", fontSize: 14, color: C.indigo, marginBottom: 6 },
-  infoItem: { fontFamily: "Saans", fontSize: 8.5, fontWeight: 400, color: "#2323A5CC", marginBottom: 3, lineHeight: 1.4 },
-  infoItemBold: { fontFamily: "Saans", fontSize: 8.5, fontWeight: 700, color: C.indigo },
-  infoTip: { fontFamily: "Saans", fontSize: 8.5, fontWeight: 500, color: C.cobalt, marginTop: 5 },
+  infoItem:      { fontFamily: "Saans", fontSize: 8.5, fontWeight: 400, color: "#2323A5CC", marginBottom: 3, lineHeight: 1.4 },
+  infoItemBold:  { fontFamily: "Saans", fontSize: 8.5, fontWeight: 700, color: C.indigo },
+  infoTip:       { fontFamily: "Saans", fontSize: 8.5, fontWeight: 500, color: C.cobalt, marginTop: 5 },
 
-  // faq
-  faqPad: { paddingHorizontal: 36, paddingTop: 20 },
+  faqPad:  { paddingHorizontal: 36, paddingTop: 20 },
   faqItem: { marginBottom: 14, paddingBottom: 14, borderBottomWidth: 1, borderBottomColor: C.lavDark },
-  faqQ: { fontFamily: "Serrif", fontSize: 12, color: C.indigo, marginBottom: 5 },
-  faqA: { fontFamily: "Saans", fontSize: 8.5, fontWeight: 400, color: "#2323A599", lineHeight: 1.5 },
-
-  // shared
-  pill: { fontFamily: "SaansMono", fontSize: 7, letterSpacing: 1, textTransform: "uppercase" },
+  faqQ:    { fontFamily: "Serrif", fontSize: 12, color: C.indigo, marginBottom: 5 },
+  faqA:    { fontFamily: "Saans", fontSize: 8.5, fontWeight: 400, color: "#2323A599", lineHeight: 1.5 },
 });
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -97,11 +95,11 @@ function InfoItem({ children }: { children: React.ReactNode }) {
 }
 
 // ─── Cover ────────────────────────────────────────────────────────────────────
-function Cover() {
+function Cover({ logoSrc }: { logoSrc: string }) {
   return (
     <Page size="A4" style={s.coverPage}>
       <View>
-        <Text style={s.coverEyebrow}>AirOps Company Offsite</Text>
+        <Image src={logoSrc} style={s.coverLogo} />
         <Text style={s.coverTitle}>Lisbon{"\n"}2026</Text>
         <Text style={s.coverSub}>April 22 – 26</Text>
       </View>
@@ -125,7 +123,7 @@ function AgendaPages() {
           <View style={s.dayHeader}>
             <View>
               <Text style={s.dayLabel}>{day.label}  ·  {day.date}</Text>
-              {day.theme ? <Text style={s.dayTheme}>{day.theme}</Text> : null}
+              {day.theme ? <Text style={s.dayTheme}>{strip(day.theme)}</Text> : null}
             </View>
             {day.location ? <Text style={s.dayLocation}>{day.location}</Text> : null}
           </View>
@@ -136,11 +134,15 @@ function AgendaPages() {
                 <Text style={s.sessionTime}>{session.time}</Text>
                 <View style={s.sessionBody}>
                   <View style={{ flexDirection: "row", alignItems: "center" }}>
-                    <Text style={s.sessionTitle}>{session.title}</Text>
+                    <Text style={s.sessionTitle}>{strip(session.title)}</Text>
                     <Text style={s.sessionBadge}>{session.type}</Text>
                   </View>
-                  {session.description ? <Text style={s.sessionDesc}>{session.description}</Text> : null}
-                  {session.location ? <Text style={s.sessionLoc}>📍 {session.location}</Text> : null}
+                  {session.description
+                    ? <Text style={s.sessionDesc}>{strip(session.description)}</Text>
+                    : null}
+                  {session.location
+                    ? <Text style={s.sessionLoc}>{session.location}</Text>
+                    : null}
                 </View>
               </View>
             ))}
@@ -160,9 +162,7 @@ function InfoPage() {
       </View>
 
       <View style={s.infoGrid}>
-        {/* Communication + Safety */}
         <View style={s.infoCard}>
-          <Text style={s.infoEmoji}>📱</Text>
           <Text style={s.infoCardTitle}>Communication + Safety</Text>
           <InfoItem>Slack: <Text style={s.infoItemBold}>#lisbon-company-offsite-2026</Text></InfoItem>
           <InfoItem>Emergency (Portugal): <Text style={s.infoItemBold}>112</Text></InfoItem>
@@ -171,9 +171,7 @@ function InfoPage() {
           <Tip text="iMessage + WhatsApp both work." />
         </View>
 
-        {/* Key Dates */}
         <View style={s.infoCard}>
-          <Text style={s.infoEmoji}>🗓️</Text>
           <Text style={s.infoCardTitle}>Key Dates</Text>
           <InfoItem>Arrival (Fly In): <Text style={s.infoItemBold}>Wednesday, April 22</Text></InfoItem>
           <InfoItem>Departure (Fly Out): <Text style={s.infoItemBold}>Sunday, April 26</Text></InfoItem>
@@ -182,9 +180,7 @@ function InfoPage() {
           <Tip text="Plan to arrive Wednesday and settle in ahead of the welcome party." />
         </View>
 
-        {/* Hotel */}
         <View style={s.infoCard}>
-          <Text style={s.infoEmoji}>🏨</Text>
           <Text style={s.infoCardTitle}>Hotel</Text>
           <InfoItem>Hotel: <Text style={s.infoItemBold}>Lisbon Marriott Hotel</Text></InfoItem>
           <InfoItem>Av. dos Combatentes 45, 1600-042 Lisboa</InfoItem>
@@ -192,9 +188,7 @@ function InfoPage() {
           <InfoItem>Roommate message from Kendalle by <Text style={s.infoItemBold}>Tuesday 4/14</Text></InfoItem>
         </View>
 
-        {/* Transportation */}
         <View style={s.infoCard}>
-          <Text style={s.infoEmoji}>🚌</Text>
           <Text style={s.infoCardTitle}>Transportation</Text>
           <InfoItem>Bus required for Thursday offsite</InfoItem>
           <InfoItem>Bus required for Saturday activity + send-off</InfoItem>
@@ -202,9 +196,7 @@ function InfoPage() {
           <Tip text="Be on time. Everyone must be on the bus." />
         </View>
 
-        {/* Arrival */}
         <View style={s.infoCard}>
-          <Text style={s.infoEmoji}>📍</Text>
           <Text style={s.infoCardTitle}>Arrival + Airport</Text>
           <InfoItem>Fly into <Text style={s.infoItemBold}>Lisbon Airport (LIS)</Text></InfoItem>
           <InfoItem>Uber/Bolt → ~15–25 min to hotel (~€15–20)</InfoItem>
@@ -212,40 +204,32 @@ function InfoPage() {
           <Tip text="Screenshot the hotel address before you land." />
         </View>
 
-        {/* Expenses */}
         <View style={s.infoCard}>
-          <Text style={s.infoEmoji}>💳</Text>
           <Text style={s.infoCardTitle}>Expenses</Text>
           <InfoItem>Ubers to/from airport → expense</InfoItem>
           <InfoItem>All other food + events → covered</InfoItem>
           <Tip text="Additional expenses must be approved by your manager." />
         </View>
 
-        {/* Weather */}
         <View style={s.infoCard}>
-          <Text style={s.infoEmoji}>🌤️</Text>
           <Text style={s.infoCardTitle}>Weather</Text>
           <InfoItem>Highs: ~65–75°F</InfoItem>
           <InfoItem>Lows: ~50–55°F</InfoItem>
           <InfoItem>Mild, mix of sun + clouds</InfoItem>
         </View>
 
-        {/* Packing */}
         <View style={s.infoCard}>
-          <Text style={s.infoEmoji}>🧳</Text>
           <Text style={s.infoCardTitle}>What to Pack</Text>
           <InfoItem>Casual, comfortable — be you (AirOps standard)</InfoItem>
           <InfoItem>Comfortable walking shoes (hills + cobblestone)</InfoItem>
           <InfoItem>Light jacket</InfoItem>
-          <InfoItem>EU adapter 🔌</InfoItem>
+          <InfoItem>EU adapter (Type F plug)</InfoItem>
           <InfoItem>Laptop + charger</InfoItem>
         </View>
 
-        {/* Spouses */}
         <View style={s.infoCard}>
-          <Text style={s.infoEmoji}>👫</Text>
           <Text style={s.infoCardTitle}>Spouses / Guests</Text>
-          <InfoItem>Invited to Saturday send-off party only 🎉</InfoItem>
+          <InfoItem>Invited to Saturday send-off party only</InfoItem>
           <InfoItem>Eligible for hotel room block Saturday night only</InfoItem>
           <InfoItem>Not included in other programming</InfoItem>
         </View>
@@ -257,7 +241,7 @@ function InfoPage() {
 // ─── FAQ ──────────────────────────────────────────────────────────────────────
 function FaqPage() {
   const faqs = [
-    { q: "What language is spoken?", a: "Portuguese is the local language. English is widely spoken in Lisbon (especially hotels + restaurants). Key phrases: Olá (hello), Obrigado/Obrigada (thank you), Por favor (please), Desculpe (excuse me), Fala inglês? (do you speak English?)." },
+    { q: "What language is spoken?", a: "Portuguese is the local language. English is widely spoken in Lisbon (especially hotels + restaurants). Key phrases: Ola (hello), Obrigado/Obrigada (thank you), Por favor (please), Desculpe (excuse me), Fala ingles? (do you speak English?)." },
     { q: "What about food, allergies, or dietary restrictions?", a: "All catering has been planned with dietary needs in mind. If anything isn't working, find Kendalle or Sarah and we'll take care of it." },
     { q: "How much should I tip?", a: "Not required. Typical: 5–10% at restaurants." },
     { q: "What should I expect getting around Lisbon?", a: "Lots of walking, hills, and cobblestone streets. Choose footwear wisely." },
@@ -265,7 +249,7 @@ function FaqPage() {
     { q: "Any team expectations?", a: "Be inclusive. Mix across teams. Don't just stick with your usual group." },
     { q: "Jet lag tips?", a: "You'll arrive Wednesday — use that time to settle in. Take care of yourself ahead of Thursday." },
     { q: "What if something goes wrong or I need help?", a: "Emergency number in Lisbon: 112. Or contact Kendalle (+1 916 837 2433) or Sarah (+1 602 295 7117). Don't hesitate to reach out." },
-    { q: "Final Note", a: "We'll handle the logistics — but please read all the information provided. You just need to: show up, be a great teammate, and enjoy Lisbon 🇵🇹" },
+    { q: "Final Note", a: "We'll handle the logistics — but please read all the information provided. You just need to: show up, be a great teammate, and enjoy Lisbon." },
   ];
 
   return (
@@ -286,10 +270,10 @@ function FaqPage() {
 }
 
 // ─── Document ─────────────────────────────────────────────────────────────────
-export function OffsitePdf() {
+export function OffsitePdf({ logoSrc }: { logoSrc: string }) {
   return (
     <Document title="AirOps Lisbon Offsite 2026" author="AirOps">
-      <Cover />
+      <Cover logoSrc={logoSrc} />
       <AgendaPages />
       <InfoPage />
       <FaqPage />

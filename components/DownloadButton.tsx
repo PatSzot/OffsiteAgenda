@@ -9,7 +9,9 @@ async function downloadPdf() {
     import("react"),
   ]);
 
-  const blob = await pdf(React.createElement(OffsitePdf)).toBlob();
+  const logoSrc = `${window.location.origin}/OffsiteLogo.png`;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const blob = await pdf(React.createElement(OffsitePdf, { logoSrc }) as any).toBlob();
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
   link.href = url;
