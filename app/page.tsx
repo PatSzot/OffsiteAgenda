@@ -1,5 +1,6 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
+import { AgendaSection } from "@/components/AgendaSection";
 import { Footer } from "@/components/Footer";
 import { agenda } from "@/data/agenda";
 
@@ -10,7 +11,7 @@ export default function HomePage() {
       <main>
         <Hero />
 
-        {/* Quick info strip — full bleed */}
+        {/* Quick info strip */}
         <section className="bg-lavender border-t border-b border-indigo-brand/15">
           <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-indigo-brand/15">
             {[
@@ -26,7 +27,7 @@ export default function HomePage() {
           </div>
         </section>
 
-
+        <AgendaSection />
       </main>
 
       <Footer />
