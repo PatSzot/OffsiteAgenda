@@ -335,7 +335,7 @@ export default function InfoFaqPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {infoSections.map((section) => (
               <div key={section.id} className="bg-white border border-lavender-dark p-6 md:p-8">
-                <p className="font-mono text-label-sm text-indigo-brand/40 uppercase tracking-widest mb-1">
+                <p className="text-3xl mb-3">
                   {section.emoji}
                 </p>
                 <h2 className="font-serif text-display-md text-indigo-brand mb-5 leading-tight">
