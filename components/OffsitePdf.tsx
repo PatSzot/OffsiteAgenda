@@ -50,7 +50,7 @@ const s = StyleSheet.create({
   coverPage:    { backgroundColor: C.cobalt, flexDirection: "column", justifyContent: "space-between", paddingHorizontal: 36, paddingVertical: 36 },
   contentPage:  { backgroundColor: C.lavender, padding: 0 },
 
-  coverLogo:    { width: 200 },
+  coverLogo:    { width: 270 },
   coverDates:   { fontFamily: "Serrif", fontSize: 36, color: C.white, marginBottom: 8 },
   coverMeta:    { fontFamily: "SaansMono", fontSize: 9, color: "#FFFFFF60", letterSpacing: 1.5, textTransform: "uppercase" },
 
