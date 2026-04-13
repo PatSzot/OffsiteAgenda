@@ -1,13 +1,7 @@
-"use client";
-
-import { useState } from "react";
 import { SessionCard } from "@/components/SessionCard";
 import { agenda } from "@/data/agenda";
 
 export function AgendaSection() {
-  const [activeDay, setActiveDay] = useState(agenda.days[0].id);
-  const day = agenda.days.find((d) => d.id === activeDay) ?? agenda.days[0];
-
   return (
     <section>
       {/* Section header */}
@@ -15,65 +9,35 @@ export function AgendaSection() {
         <h2 className="font-serif text-display-lg text-white">Agenda</h2>
       </div>
 
-      {/* Sticky day tabs */}
-      <div className="sticky top-0 z-40 bg-cobalt border-b border-white/10">
-        <div className="flex gap-0 overflow-x-auto scrollbar-none divide-x divide-white/10" role="tablist" aria-label="Days">
-          {agenda.days.map((d) => (
-            <button
-              key={d.id}
-              role="tab"
-              aria-selected={d.id === activeDay}
-              aria-controls={`panel-${d.id}`}
-              onClick={() => setActiveDay(d.id)}
-              className={`
-                shrink-0 px-8 py-4 font-mono text-label-lg uppercase tracking-widest transition-colors
-                ${d.id === activeDay
-                  ? "bg-white text-cobalt"
-                  : "text-white/70 hover:text-white hover:bg-white/10"
-                }
-              `}
-            >
-              {d.label}
-              <span
-                className={`
-                  ml-2 hidden sm:inline font-sans normal-case tracking-normal text-body-sm
-                  ${d.id === activeDay ? "text-cobalt/60" : "text-white/40"}
-                `}
-              >
-                {d.date}
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Day panel */}
-      <div className="bg-lavender" id={`panel-${day.id}`} role="tabpanel">
-        {/* Day header */}
-        <div className="border-b border-indigo-brand/15 px-8 md:px-12 lg:px-16 py-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div>
-            <p className="label text-cobalt mb-2">{day.label} — {day.date}</p>
-            {day.theme && (
-              <h3 className="text-display-lg font-serif text-indigo-brand">{day.theme}</h3>
+      {/* All days */}
+      {agenda.days.map((day) => (
+        <div key={day.id} id={day.id} className="bg-lavender border-t border-indigo-brand/15">
+          {/* Day header */}
+          <div className="border-b border-indigo-brand/15 px-8 md:px-12 lg:px-16 py-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <p className="label text-cobalt mb-2">{day.label} — {day.date}</p>
+              {day.theme && (
+                <h3 className="text-display-lg font-serif text-indigo-brand">{day.theme}</h3>
+              )}
+            </div>
+            {day.location && (
+              <p className="font-mono text-label-sm text-indigo-brand/50 flex items-center gap-1.5">
+                <PinIcon />
+                {day.location}
+              </p>
             )}
           </div>
-          {day.location && (
-            <p className="font-mono text-label-sm text-indigo-brand/50 flex items-center gap-1.5">
-              <PinIcon />
-              {day.location}
-            </p>
-          )}
-        </div>
 
-        {/* Sessions */}
-        <div className="px-8 md:px-12 lg:px-16 py-12 flex flex-col gap-4">
-          {day.sessions.map((session) => (
-            <div key={session.id} id={session.id} className="animate-slide-up">
-              <SessionCard session={session} />
-            </div>
-          ))}
+          {/* Sessions */}
+          <div className="px-8 md:px-12 lg:px-16 py-12 flex flex-col gap-4">
+            {day.sessions.map((session) => (
+              <div key={session.id} id={session.id}>
+                <SessionCard session={session} />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      ))}
     </section>
   );
 }
