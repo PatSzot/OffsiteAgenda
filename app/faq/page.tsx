@@ -324,7 +324,7 @@ export default function InfoFaqPage() {
 
       {/* Page hero */}
       <div className="bg-cobalt pt-16 pb-16 px-8 md:px-12 lg:px-16">
-        <h1 className="text-display-xl font-display text-white mb-2">Info & FAQ</h1>
+        <h1 className="text-display-xl font-display text-white mb-2">Help Center</h1>
         <p className="font-sans text-body-lg text-white/60">Everything you need to know before Lisbon</p>
       </div>
 
