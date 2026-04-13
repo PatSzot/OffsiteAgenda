@@ -1,8 +1,3 @@
-// ─── Agenda Data ─────────────────────────────────────────────────────────────
-// Fill in sessions as the agenda comes together.
-// Each day can have any number of sessions. Sessions can be optional (breaks,
-// meals, social) and can include a speaker and/or location override.
-
 export type SessionType =
   | "keynote"
   | "talk"
@@ -16,235 +11,200 @@ export type SessionType =
 export interface Speaker {
   name: string;
   title?: string;
-  avatar?: string; // path relative to /public
+  avatar?: string;
 }
 
 export interface Session {
   id: string;
-  time: string;         // e.g. "09:00"
-  endTime?: string;     // e.g. "09:45"
+  time: string;
+  endTime?: string;
   title: string;
   description?: string;
   type: SessionType;
   speakers?: Speaker[];
-  location?: string;    // overrides day-level location
-  highlight?: boolean;  // render with extra visual weight
+  location?: string;
+  highlight?: boolean;
 }
 
 export interface Day {
   id: string;
-  label: string;        // e.g. "Day 1"
-  date: string;         // e.g. "Monday, March 9"
-  location?: string;    // default location for the day
-  theme?: string;       // optional day theme / subtitle
+  label: string;
+  date: string;
+  theme?: string;
+  location?: string;
   sessions: Session[];
 }
 
-export interface AgendaConfig {
+export interface Agenda {
   eventName: string;
-  tagline: string;
   dates: string;
   location: string;
-  city: string;
   days: Day[];
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-
-export const agenda: AgendaConfig = {
-  eventName: "AirOps Lisbon 2026",
-  tagline: "Together in Lisbon",
+export const agenda: Agenda = {
+  eventName: "AirOps Lisbon Offsite 2026",
   dates: "April 22–26, 2026",
   location: "Lisbon, Portugal",
-  city: "Lisbon",
-
   days: [
     {
-      id: "day-1",
+      id: "wed",
       label: "Wednesday",
       date: "April 22",
-      location: "TBD",
-      theme: "Arrival & Welcome Dinner",
+      theme: "Arrivals",
+      location: "Lisbon Marriott Hotel",
       sessions: [
         {
-          id: "d1-arrival",
-          time: "TBD",
-          title: "Arrivals & Check-in",
+          id: "wed-arrivals",
+          time: "All day",
+          title: "Arrivals",
+          description:
+            "Fly into Lisbon Airport (LIS). Uber/Bolt is ~15–25 min to the hotel. Remember to expense your airport transfer.",
           type: "travel",
-          highlight: false,
         },
         {
-          id: "d1-dinner",
-          time: "TBD",
-          title: "Welcome Dinner",
-          description: "Arrival dinner to kick off the offsite.",
-          type: "meal",
+          id: "wed-checkin",
+          time: "4:00 PM",
+          title: "Hotel Check-In",
+          type: "break",
+          location: "Lisbon Marriott Hotel",
+        },
+        {
+          id: "wed-welcome",
+          time: "7:00 PM",
+          endTime: "9:00 PM",
+          title: "Welcome Party",
+          description: "Light bites and drinks to kick off the offsite.",
+          type: "social",
           highlight: true,
-          location: "TBD",
+          location: "Lisbon Marriott Hotel",
         },
       ],
     },
     {
-      id: "day-2",
+      id: "thu",
       label: "Thursday",
       date: "April 23",
-      location: "TBD",
-      theme: "Strategy & Connection",
+      theme: "Full Offsite Day",
+      location: "MAAT – Museum of Art, Architecture and Technology",
       sessions: [
         {
-          id: "d2-breakfast",
-          time: "TBD",
-          title: "Breakfast",
-          type: "meal",
+          id: "thu-bus",
+          time: "Morning",
+          title: "Bus Departure to MAAT",
+          description:
+            "Transportation is provided. Be on time — everyone must be on the bus, no separate transport.",
+          type: "travel",
         },
         {
-          id: "d2-morning",
-          time: "TBD",
-          title: "Morning Sessions",
-          description: "Coming soon.",
-          type: "talk",
+          id: "thu-offsite",
+          time: "9:00 AM",
+          endTime: "6:00 PM",
+          title: "Full Offsite Day",
+          description:
+            "A full day focused on building relationships, being present, and team connection. No laptops — this is intentional.",
+          type: "keynote",
           highlight: true,
+          location: "MAAT – Museum of Art, Architecture and Technology",
         },
         {
-          id: "d2-lunch",
-          time: "TBD",
-          title: "Lunch",
+          id: "thu-dinner",
+          time: "Evening",
+          title: "Dinner with Direct Teams",
+          description:
+            "Dinner in your direct team group. Check the dinner groups link in Notion for your assignment.",
           type: "meal",
-        },
-        {
-          id: "d2-afternoon",
-          time: "TBD",
-          title: "Afternoon Sessions",
-          description: "Coming soon.",
-          type: "workshop",
-        },
-        {
-          id: "d2-social",
-          time: "TBD",
-          title: "Evening Activity",
-          description: "Coming soon.",
-          type: "social",
           highlight: true,
-          location: "TBD",
         },
       ],
     },
     {
-      id: "day-3",
+      id: "fri",
       label: "Friday",
       date: "April 24",
-      location: "TBD",
-      theme: "Coming Soon",
+      theme: "Surprise Day 👀",
+      location: "Lisbon Marriott Hotel",
       sessions: [
         {
-          id: "d3-breakfast",
-          time: "TBD",
-          title: "Breakfast",
-          type: "meal",
-        },
-        {
-          id: "d3-morning",
-          time: "TBD",
-          title: "Morning Sessions",
-          description: "Coming soon.",
-          type: "talk",
+          id: "fri-surprise",
+          time: "All day",
+          title: "Surprise Day",
+          description:
+            "More details to come. Make sure your laptop is fully charged — extension cords will be available but don't rely on them.",
+          type: "keynote",
           highlight: true,
+          location: "Lisbon Marriott Hotel",
         },
         {
-          id: "d3-lunch",
-          time: "TBD",
-          title: "Lunch",
+          id: "fri-dinner",
+          time: "Evening",
+          title: "Dinner with Mixed Groups",
+          description: "Dinner in mixed team groups. Groups coming soon.",
           type: "meal",
-        },
-        {
-          id: "d3-afternoon",
-          time: "TBD",
-          title: "Afternoon Sessions",
-          description: "Coming soon.",
-          type: "workshop",
-        },
-        {
-          id: "d3-social",
-          time: "TBD",
-          title: "Evening Activity",
-          description: "Coming soon.",
-          type: "social",
           highlight: true,
-          location: "TBD",
         },
       ],
     },
     {
-      id: "day-4",
+      id: "sat",
       label: "Saturday",
       date: "April 25",
-      location: "TBD",
-      theme: "Coming Soon",
+      theme: "Freedom Day 🇵🇹",
       sessions: [
         {
-          id: "d4-breakfast",
-          time: "TBD",
-          title: "Breakfast",
-          type: "meal",
-        },
-        {
-          id: "d4-morning",
-          time: "TBD",
-          title: "Morning Sessions",
-          description: "Coming soon.",
-          type: "talk",
-          highlight: true,
-        },
-        {
-          id: "d4-lunch",
-          time: "TBD",
-          title: "Lunch",
-          type: "meal",
-        },
-        {
-          id: "d4-afternoon",
-          time: "TBD",
-          title: "Afternoon Sessions",
-          description: "Coming soon.",
-          type: "workshop",
-        },
-        {
-          id: "d4-social",
-          time: "TBD",
-          title: "Evening Activity",
-          description: "Coming soon.",
+          id: "sat-activity",
+          time: "Daytime",
+          title: "Optional AirOps Activity",
+          description:
+            "AirOps Flavortown-style fun. No assigned groups — mix and explore with whoever you'd like. More details coming soon.",
           type: "social",
           highlight: true,
-          location: "TBD",
+        },
+        {
+          id: "sat-freedom",
+          time: "All day",
+          title: "Freedom Day — April 25",
+          description:
+            "Portugal's national holiday celebrating the end of dictatorship and the start of democracy. The city will be celebratory and lively. Expect some traffic delays — plan extra buffer time getting around.",
+          type: "break",
+        },
+        {
+          id: "sat-bus",
+          time: "Before 6:00 PM",
+          title: "Bus to Send-Off Party",
+          description:
+            "Return to hotel to take the bus. Everyone must be on the bus — no separate transportation.",
+          type: "travel",
+        },
+        {
+          id: "sat-sendoff",
+          time: "6:00 PM",
+          title: "Send-Off Party",
+          description: "Celebrate the end of the offsite. Spouses and guests welcome.",
+          type: "social",
+          highlight: true,
         },
       ],
     },
     {
-      id: "day-5",
+      id: "sun",
       label: "Sunday",
       date: "April 26",
-      location: "TBD",
-      theme: "Send-off & Departures",
+      theme: "Departures",
       sessions: [
         {
-          id: "d5-breakfast",
-          time: "TBD",
-          title: "Breakfast",
-          type: "meal",
+          id: "sun-checkout",
+          time: "12:00 PM",
+          title: "Hotel Check-Out",
+          type: "break",
+          location: "Lisbon Marriott Hotel",
         },
         {
-          id: "d5-sendoff",
-          time: "TBD",
-          title: "Send-off Party",
-          description: "A final celebration before everyone heads home.",
-          type: "social",
-          highlight: true,
-          location: "TBD",
-        },
-        {
-          id: "d5-departures",
-          time: "TBD",
+          id: "sun-departures",
+          time: "All day",
           title: "Departures",
+          description:
+            "Safe travels! Fly out from Lisbon Airport (LIS). Remember to expense your airport Uber.",
           type: "travel",
         },
       ],
