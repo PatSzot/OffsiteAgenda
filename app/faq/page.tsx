@@ -4,13 +4,189 @@ import { useState } from "react";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
-interface FaqItem {
-  id: string;
-  question: string;
-  answer: React.ReactNode;
+// ─── Shared primitives ────────────────────────────────────────────────────────
+
+function Tip({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="flex items-start gap-2">
+      <span aria-hidden className="font-mono text-cobalt shrink-0">→</span>
+      <span className="font-sans text-body-sm text-cobalt font-medium">{children}</span>
+    </p>
+  );
 }
 
-const faqs: FaqItem[] = [
+function Bullet() {
+  return <span className="mt-2 w-1.5 h-1.5 rounded-full bg-indigo-brand/30 shrink-0 block" />;
+}
+
+function ChevronIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
+      <path d="M5 7.5l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// ─── Important Info ───────────────────────────────────────────────────────────
+
+const infoSections = [
+  {
+    id: "key-dates",
+    title: "Key Dates",
+    emoji: "🗓️",
+    content: (
+      <div className="space-y-3">
+        <ul className="space-y-1.5">
+          <li className="flex items-start gap-2"><Bullet /><span><strong>Arrival (Fly In):</strong> Wednesday, April 22</span></li>
+          <li className="flex items-start gap-2"><Bullet /><span><strong>Departure (Fly Out):</strong> Sunday, April 26</span></li>
+          <li className="flex items-start gap-2"><Bullet /><span><strong>Hotel Check-In:</strong> 4:00 PM</span></li>
+          <li className="flex items-start gap-2"><Bullet /><span><strong>Hotel Check-Out:</strong> 12:00 PM</span></li>
+        </ul>
+        <Tip>Plan to arrive Wednesday and settle in ahead of the welcome party.</Tip>
+      </div>
+    ),
+  },
+  {
+    id: "arrival",
+    title: "Arrival + Airport",
+    emoji: "📍",
+    content: (
+      <div className="space-y-3">
+        <ul className="space-y-1.5">
+          <li className="flex items-start gap-2"><Bullet />Fly into <strong>Lisbon Airport (LIS)</strong></li>
+          <li className="flex items-start gap-2"><Bullet />Uber/Bolt → ~15–25 min to hotel</li>
+          <li className="flex items-start gap-2"><Bullet />Ubers to/from the airport → <strong>expense</strong></li>
+        </ul>
+        <Tip>Screenshot the hotel address before you land (service can be spotty).</Tip>
+      </div>
+    ),
+  },
+  {
+    id: "hotel",
+    title: "Hotel",
+    emoji: "🏨",
+    content: (
+      <div className="space-y-4">
+        <ul className="space-y-1.5">
+          <li className="flex items-start gap-2"><Bullet /><span><strong>Hotel:</strong> Lisbon Marriott Hotel</span></li>
+        </ul>
+        <div>
+          <p className="font-medium text-indigo-brand mb-2">Rooming:</p>
+          <ul className="space-y-1.5">
+            <li className="flex items-start gap-2"><Bullet />If you have a roommate, you&apos;ll receive a message from Kendalle by <strong>Tuesday, 4/14</strong></li>
+          </ul>
+        </div>
+        <div>
+          <p className="font-medium text-indigo-brand mb-2">Closest hospital:</p>
+          <ul className="space-y-1.5">
+            <li className="flex items-start gap-2"><Bullet />Hospital de Santa Maria</li>
+          </ul>
+        </div>
+      </div>
+    ),
+  },
+  {
+    id: "transportation",
+    title: "Transportation",
+    emoji: "🚌",
+    content: (
+      <div className="space-y-3">
+        <p>You must take the buses to and from:</p>
+        <ul className="space-y-1.5">
+          <li className="flex items-start gap-2"><Bullet />Thursday offsite</li>
+          <li className="flex items-start gap-2"><Bullet />Saturday activity + send-off party</li>
+        </ul>
+        <p className="text-body-sm text-indigo-brand/60">Kendalle + Sarah will be doing headcounts.</p>
+        <div className="space-y-2">
+          <Tip>Be on time.</Tip>
+          <Tip>Plan your day around buses.</Tip>
+          <Tip>Everyone must be on the bus (no separate transportation).</Tip>
+        </div>
+        <p className="font-mono text-label-sm text-indigo-brand/50 uppercase tracking-widest">Bus times will be shared later this week</p>
+      </div>
+    ),
+  },
+  {
+    id: "spouses",
+    title: "Spouses / Guests",
+    emoji: "👫",
+    content: (
+      <ul className="space-y-1.5">
+        <li className="flex items-start gap-2"><Bullet />Invited to <strong>Saturday send-off party only 🎉</strong></li>
+        <li className="flex items-start gap-2"><Bullet />Eligible for <strong>hotel room block Saturday night only</strong></li>
+        <li className="flex items-start gap-2"><Bullet />Not included in other programming</li>
+      </ul>
+    ),
+  },
+  {
+    id: "expenses",
+    title: "Expenses",
+    emoji: "💳",
+    content: (
+      <div className="space-y-3">
+        <ul className="space-y-1.5">
+          <li className="flex items-start gap-2"><Bullet />Ubers to/from airport → expense</li>
+          <li className="flex items-start gap-2"><Bullet />All other food + events → covered</li>
+        </ul>
+        <Tip>Any additional expenses must be approved directly by your manager.</Tip>
+      </div>
+    ),
+  },
+  {
+    id: "weather",
+    title: "Weather",
+    emoji: "🌤️",
+    content: (
+      <div className="space-y-3">
+        <ul className="space-y-1.5">
+          <li className="flex items-start gap-2"><Bullet />Highs: ~65–75°F</li>
+          <li className="flex items-start gap-2"><Bullet />Lows: ~50–55°F</li>
+          <li className="flex items-start gap-2"><Bullet />Mild, mix of sun + clouds</li>
+        </ul>
+        <Tip>Check the forecast before you pack.</Tip>
+      </div>
+    ),
+  },
+  {
+    id: "packing",
+    title: "What to Pack",
+    emoji: "🧳",
+    content: (
+      <ul className="space-y-1.5">
+        <li className="flex items-start gap-2"><Bullet />Casual, comfortable — <strong>be you (AirOps standard)</strong></li>
+        <li className="flex items-start gap-2"><Bullet />Comfortable walking shoes (Lisbon = hills + cobblestone)</li>
+        <li className="flex items-start gap-2"><Bullet />Light jacket</li>
+        <li className="flex items-start gap-2"><Bullet />EU adapter 🔌</li>
+        <li className="flex items-start gap-2"><Bullet />Laptop + charger</li>
+      </ul>
+    ),
+  },
+  {
+    id: "communication",
+    title: "Communication + Safety",
+    emoji: "📱",
+    content: (
+      <div className="space-y-4">
+        <ul className="space-y-1.5">
+          <li className="flex items-start gap-2"><Bullet />Slack: <strong>#lisbon-company-offsite-2026</strong></li>
+          <li className="flex items-start gap-2"><Bullet /><span><strong>Emergency (Portugal):</strong> 112</span></li>
+        </ul>
+        <div>
+          <p className="font-medium text-indigo-brand mb-2">If you need anything or feel unsafe:</p>
+          <ul className="space-y-1.5">
+            <li className="flex items-start gap-2"><Bullet />Kendalle: +1 916 837 2433</li>
+            <li className="flex items-start gap-2"><Bullet />Sarah: +1 602 295 7117</li>
+          </ul>
+        </div>
+        <Tip>iMessage + WhatsApp both work.</Tip>
+      </div>
+    ),
+  },
+];
+
+// ─── FAQs ─────────────────────────────────────────────────────────────────────
+
+const faqs = [
   {
     id: "language",
     question: "What language is spoken? Will English be enough?",
@@ -136,30 +312,10 @@ const faqs: FaqItem[] = [
   },
 ];
 
-function Tip({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="flex items-start gap-2">
-      <span aria-hidden className="font-mono text-cobalt shrink-0">→</span>
-      <span className="font-sans text-body-sm text-cobalt font-medium">{children}</span>
-    </p>
-  );
-}
+// ─── Page ─────────────────────────────────────────────────────────────────────
 
-function Bullet() {
-  return <span className="mt-2 w-1.5 h-1.5 rounded-full bg-indigo-brand/30 shrink-0 block" />;
-}
-
-function ChevronIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
-      <path d="M5 7.5l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-export default function FaqPage() {
+export default function InfoFaqPage() {
   const [openId, setOpenId] = useState<string | null>(null);
-
   const toggle = (id: string) => setOpenId((prev) => (prev === id ? null : id));
 
   return (
@@ -168,41 +324,64 @@ export default function FaqPage() {
 
       {/* Page hero */}
       <div className="bg-cobalt pt-16 pb-16 px-8 md:px-12 lg:px-16">
-        <h1 className="text-display-xl font-display text-white mb-2">FAQ</h1>
+        <h1 className="text-display-xl font-display text-white mb-2">Info & FAQ</h1>
         <p className="font-sans text-body-lg text-white/60">Everything you need to know before Lisbon</p>
       </div>
 
-      {/* FAQ list */}
       <main className="bg-lavender">
-        <div className="px-8 md:px-12 lg:px-16 py-12 flex flex-col gap-3 max-w-4xl">
-          {faqs.map((faq) => {
-            const isOpen = openId === faq.id;
-            return (
-              <div key={faq.id} className="bg-white border border-lavender-dark">
-                <button
-                  onClick={() => toggle(faq.id)}
-                  aria-expanded={isOpen}
-                  className="w-full flex items-start justify-between gap-4 p-6 md:p-8 text-left"
-                >
-                  <h2 className="font-serif text-display-md text-indigo-brand leading-tight">
-                    {faq.question}
-                  </h2>
-                  <span
-                    className={`mt-1 shrink-0 text-indigo-brand/40 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-                    aria-hidden
-                  >
-                    <ChevronIcon />
-                  </span>
-                </button>
-
-                {isOpen && (
-                  <div className="px-6 md:px-8 pb-6 md:pb-8 text-body-md text-indigo-brand/70 border-t border-lavender-dark pt-5 animate-slide-up">
-                    {faq.answer}
-                  </div>
-                )}
+        {/* Important Info */}
+        <div className="border-b border-indigo-brand/15 px-8 md:px-12 lg:px-16 py-12">
+          <p className="label text-indigo-brand/40 mb-8">Important Info</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-5xl">
+            {infoSections.map((section) => (
+              <div key={section.id} className="bg-white border border-lavender-dark p-6 md:p-8">
+                <p className="font-mono text-label-sm text-indigo-brand/40 uppercase tracking-widest mb-1">
+                  {section.emoji}
+                </p>
+                <h2 className="font-serif text-display-md text-indigo-brand mb-5 leading-tight">
+                  {section.title}
+                </h2>
+                <div className="text-body-md text-indigo-brand/70">
+                  {section.content}
+                </div>
               </div>
-            );
-          })}
+            ))}
+          </div>
+        </div>
+
+        {/* FAQs */}
+        <div className="px-8 md:px-12 lg:px-16 py-12">
+          <p className="label text-indigo-brand/40 mb-8">FAQs</p>
+          <div className="flex flex-col gap-3 max-w-4xl">
+            {faqs.map((faq) => {
+              const isOpen = openId === faq.id;
+              return (
+                <div key={faq.id} className="bg-white border border-lavender-dark">
+                  <button
+                    onClick={() => toggle(faq.id)}
+                    aria-expanded={isOpen}
+                    className="w-full flex items-start justify-between gap-4 p-6 md:p-8 text-left"
+                  >
+                    <h2 className="font-serif text-display-md text-indigo-brand leading-tight">
+                      {faq.question}
+                    </h2>
+                    <span
+                      className={`mt-1 shrink-0 text-indigo-brand/40 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                      aria-hidden
+                    >
+                      <ChevronIcon />
+                    </span>
+                  </button>
+
+                  {isOpen && (
+                    <div className="px-6 md:px-8 pb-6 md:pb-8 text-body-md text-indigo-brand/70 border-t border-lavender-dark pt-5 animate-slide-up">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       </main>
 
