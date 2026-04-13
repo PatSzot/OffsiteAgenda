@@ -1,6 +1,7 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { AgendaSection } from "@/components/AgendaSection";
+import { MapSection } from "@/components/MapSection";
 import { Footer } from "@/components/Footer";
 import { agenda } from "@/data/agenda";
 
@@ -28,6 +29,7 @@ export default function HomePage() {
         </section>
 
         <AgendaSection />
+        <MapSection />
       </main>
 
       <Footer />
