@@ -165,7 +165,7 @@ export const agenda: Agenda = {
           time: "All day",
           title: "Freedom Day — April 25",
           description:
-            "Portugal's national holiday celebrating the end of dictatorship and the start of democracy. The city will be celebratory and lively. Expect some traffic delays — plan extra buffer time getting around.",
+            "Portugal's national holiday celebrating the end of dictatorship and the start of democracy. The vibe: celebratory, patriotic, and lively across the city. Getting around: expect traffic delays — plan extra buffer time. What's open: restaurants and tourist areas mostly open; some shops may have reduced hours. Overall: a very cool day to be in Lisbon — just plan ahead.",
           type: "break",
         },
         {
