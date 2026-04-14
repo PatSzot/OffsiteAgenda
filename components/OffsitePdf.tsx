@@ -13,7 +13,7 @@ import { agenda } from "@/data/agenda";
 Font.register({
   family: "Saans",
   fonts: [
-    { src: "/fonts/Saans-Regular.ttf", fontWeight: 400 },
+    { src: "/fonts/Saans-Regular.ttf", fontWeight: 500 },
     { src: "/fonts/Saans-Medium.ttf",  fontWeight: 500 },
     { src: "/fonts/Saans-Bold.ttf",    fontWeight: 700 },
   ],
@@ -26,7 +26,7 @@ Font.register({
 Font.register({
   family: "Serrif",
   src: "/fonts/SerrifVF.ttf",
-  fontWeight: 400,
+  fontWeight: 500,
 });
 
 // ─── Strip emojis ─────────────────────────────────────────────────────────────
@@ -67,21 +67,21 @@ const s = StyleSheet.create({
   sessionTime:  { fontFamily: "SaansMono", fontSize: 10, color: "#2323A580", width: 62, letterSpacing: 0.5, paddingTop: 1 },
   sessionBody:  { flex: 1 },
   sessionTitle: { fontFamily: "Saans", fontSize: 13, fontWeight: 500, color: C.indigo, marginBottom: 3 },
-  sessionDesc:  { fontFamily: "Saans", fontSize: 11, fontWeight: 400, color: "#2323A599", lineHeight: 1.5 },
+  sessionDesc:  { fontFamily: "Saans", fontSize: 11, fontWeight: 500, color: "#2323A599", lineHeight: 1.5 },
   sessionBadge: { fontFamily: "SaansMono", fontSize: 8, color: C.cobalt, letterSpacing: 1, textTransform: "uppercase", marginLeft: 7, paddingHorizontal: 5, paddingVertical: 2, backgroundColor: "#1B1DB520" },
   sessionLoc:   { fontFamily: "SaansMono", fontSize: 10, color: "#2323A560", marginTop: 4 },
 
   infoGrid:      { paddingHorizontal: 36, paddingTop: 22, paddingBottom: 8, flexDirection: "row", flexWrap: "wrap" },
   infoCard:      { width: "50%", paddingRight: 18, marginBottom: 24 },
   infoCardTitle: { fontFamily: "Serrif", fontSize: 17, color: C.indigo, marginBottom: 7 },
-  infoItem:      { fontFamily: "Saans", fontSize: 11, fontWeight: 400, color: "#2323A5CC", marginBottom: 4, lineHeight: 1.45 },
+  infoItem:      { fontFamily: "Saans", fontSize: 11, fontWeight: 500, color: "#2323A5CC", marginBottom: 4, lineHeight: 1.45 },
   infoItemBold:  { fontFamily: "Saans", fontSize: 11, fontWeight: 700, color: C.indigo },
   infoTip:       { fontFamily: "Saans", fontSize: 11, fontWeight: 500, color: C.cobalt, marginTop: 6 },
 
   faqPad:  { paddingHorizontal: 36, paddingTop: 22 },
   faqItem: { marginBottom: 16, paddingBottom: 16, borderBottomWidth: 1, borderBottomColor: C.lavDark },
   faqQ:    { fontFamily: "Serrif", fontSize: 15, color: C.indigo, marginBottom: 6 },
-  faqA:    { fontFamily: "Saans", fontSize: 11, fontWeight: 400, color: "#2323A599", lineHeight: 1.55 },
+  faqA:    { fontFamily: "Saans", fontSize: 11, fontWeight: 500, color: "#2323A599", lineHeight: 1.55 },
 });
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
