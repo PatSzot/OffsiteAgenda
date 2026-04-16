@@ -91,6 +91,9 @@ export function AgendaSection() {
               {day.theme && (
                 <h3 className="text-display-lg font-serif text-indigo-brand">{day.theme}</h3>
               )}
+              {day.note && (
+                <p className="mt-3 font-sans text-body-sm text-indigo-brand/60 max-w-2xl">{day.note}</p>
+              )}
             </div>
             {day.location && (
               <p className="font-mono text-label-sm text-indigo-brand/50 flex items-center gap-1.5">

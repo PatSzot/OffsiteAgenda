@@ -31,6 +31,7 @@ export interface Day {
   label: string;
   date: string;
   theme?: string;
+  note?: string;
   location?: string;
   sessions: Session[];
 }
@@ -160,6 +161,7 @@ export const agenda: Agenda = {
       label: "Saturday",
       date: "April 25",
       theme: "Freedom Day 🇵🇹",
+      note: "Portugal's national holiday celebrating the end of dictatorship and the start of democracy. The vibe: celebratory, patriotic, and lively across the city. Getting around: expect traffic delays — plan extra buffer time. What's open: restaurants and tourist areas mostly open; some shops may have reduced hours. Overall: a very cool day to be in Lisbon — just plan ahead.",
       sessions: [
         {
           id: "sat-activity",
@@ -168,15 +170,6 @@ export const agenda: Agenda = {
           description:
             "AirOps Flavortown-style fun. No assigned groups — mix and explore with whoever you'd like. More details coming soon. ⚠️ CAUTION: Be careful when riding bikes. Only ride down by the river — anywhere else is a near-death experience.",
           type: "social",
-          highlight: true,
-        },
-        {
-          id: "sat-freedom",
-          time: "All day",
-          title: "Freedom Day — April 25",
-          description:
-            "Portugal's national holiday celebrating the end of dictatorship and the start of democracy. The vibe: celebratory, patriotic, and lively across the city. Getting around: expect traffic delays — plan extra buffer time. What's open: restaurants and tourist areas mostly open; some shops may have reduced hours. Overall: a very cool day to be in Lisbon — just plan ahead.",
-          type: "break",
           highlight: true,
         },
         {
