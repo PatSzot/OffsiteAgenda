@@ -96,6 +96,7 @@ export const agenda: Agenda = {
           description:
             "Be at the bus by 8:00 AM for check-in. Departure at 8:15 AM. Everyone must be on the bus — no separate transport.",
           type: "travel",
+          highlight: true,
         },
         {
           id: "thu-offsite",
@@ -116,6 +117,7 @@ export const agenda: Agenda = {
           description:
             "Load up and check in at 6:15 PM. Departure back to hotel at 6:30 PM. Everyone must be on the bus.",
           type: "travel",
+          highlight: true,
         },
         {
           id: "thu-dinner",
@@ -187,6 +189,7 @@ export const agenda: Agenda = {
           description:
             "Check-in 4:45–5:00 PM. Departure at 5:15 PM. Everyone must be on the bus — no separate transportation.",
           type: "travel",
+          highlight: true,
         },
         {
           id: "sat-sendoff",
