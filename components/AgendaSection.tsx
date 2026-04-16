@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { RiMapPinLine } from "@remixicon/react";
 import { SessionCard } from "@/components/SessionCard";
+import { DinnerGroupLookup } from "@/components/DinnerGroupLookup";
 import { agenda } from "@/data/agenda";
 
 export function AgendaSection() {
@@ -102,7 +103,9 @@ export function AgendaSection() {
           <div className="px-8 md:px-12 lg:px-16 py-12 flex flex-col gap-4">
             {day.sessions.map((session) => (
               <div key={session.id} id={session.id}>
-                <SessionCard session={session} />
+                <SessionCard session={session}>
+                  {session.id === "fri-dinner" && <DinnerGroupLookup />}
+                </SessionCard>
               </div>
             ))}
           </div>

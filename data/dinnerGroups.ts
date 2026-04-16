@@ -1,0 +1,185 @@
+export interface DinnerPerson {
+  name: string;
+  team: string;
+}
+
+export interface DinnerGroup {
+  group: number;
+  people: DinnerPerson[];
+}
+
+export const dinnerGroups: DinnerGroup[] = [
+  {
+    group: 1,
+    people: [
+      { name: "Bryan Connolly", team: "Customer Experience" },
+      { name: "Stephanie Lonn", team: "G&A" },
+      { name: "Dillon Hong", team: "Product and Design" },
+      { name: "Abdullahi Elmi", team: "Customer Experience" },
+      { name: "Michael Kenler", team: "Sales" },
+      { name: "Kyle Roybal", team: "Sales" },
+      { name: "Mahir Yavuz", team: "Engineering" },
+      { name: "AJ Diaz", team: "CX" },
+      { name: "Nicholas Casale", team: "Sales" },
+      { name: "Johannes Herter", team: "Product and Design" },
+    ],
+  },
+  {
+    group: 2,
+    people: [
+      { name: "Kendalle Cann", team: "G&A" },
+      { name: "Nicolas Tinte", team: "Engineering" },
+      { name: "William Reed", team: "Customer Experience" },
+      { name: "Eoin Gronningsater", team: "Sales" },
+      { name: "Nicholas Avallone", team: "Sales" },
+      { name: "Allison Rubin", team: "Marketing" },
+      { name: "Juan Sergio Aparicio Gravier", team: "Engineering" },
+      { name: "Victoria Madrid", team: "Engineering" },
+      { name: "Jessica Rosenberg", team: "Marketing" },
+      { name: "Alexander Halliday", team: "G&A" },
+    ],
+  },
+  {
+    group: 3,
+    people: [
+      { name: "Eoin Clancy", team: "Marketing" },
+      { name: "Bilal Siddiqui", team: "Engineering" },
+      { name: "Jeremy Kao", team: "Customer Experience" },
+      { name: "Diana Shiling", team: "Customer Experience" },
+      { name: "Arnav Amruth", team: "Sales" },
+      { name: "IniOluwa Abiodun", team: "Product and Design" },
+      { name: "David Flowers", team: "Product and Design" },
+      { name: "Juan Manuel Ramallo Aponte", team: "Engineering" },
+      { name: "Dan Cohen", team: "Sales" },
+      { name: "Yuriy Prots", team: "Sales" },
+    ],
+  },
+  {
+    group: 4,
+    people: [
+      { name: "Enrique Alejandro Miralles", team: "Engineering" },
+      { name: "Ali McCarty", team: "Sales" },
+      { name: "Arnett Shen", team: "Customer Experience" },
+      { name: "Dakota Dodson", team: "Sales" },
+      { name: "Agustin Costa", team: "Engineering" },
+      { name: "Ashwini Krishnan", team: "Product and Design" },
+      { name: "Chinonso Nwabueze", team: "Customer Experience" },
+      { name: "Ken Li", team: "Product and Design" },
+      { name: "Cyris Jelliam Talban", team: "Marketing / Growth" },
+      { name: "Nicole Guercia", team: "Sales" },
+    ],
+  },
+  {
+    group: 5,
+    people: [
+      { name: "Manuel Sheen", team: "CX" },
+      { name: "Kimia Zargari", team: "Product and Design" },
+      { name: "Joshua Spilker", team: "Marketing" },
+      { name: "Daniel Guerra", team: "Sales" },
+      { name: "Santiago Goycoechea", team: "Engineering" },
+      { name: "Beckett Dowhan", team: "Sales" },
+      { name: "Facundo Luis Palavecino", team: "Engineering" },
+      { name: "Gianna Sisti", team: "Sales" },
+      { name: "Oshen Davidson", team: "Marketing / Growth" },
+    ],
+  },
+  {
+    group: 6,
+    people: [
+      { name: "Mauro Centurion", team: "Engineering" },
+      { name: "Patrick Szot", team: "Marketing" },
+      { name: "Melanie Dell'Olio", team: "Customer Experience" },
+      { name: "Frank Mayfield", team: "Sales" },
+      { name: "Cynthia Zu", team: "Sales" },
+      { name: "Sarah Lowery", team: "G&A" },
+      { name: "Bernabe Gonzalez", team: "Engineering" },
+      { name: "Henry Moses Jr", team: "Customer Experience" },
+      { name: "Zoe Jessup", team: "Sales" },
+    ],
+  },
+  {
+    group: 7,
+    people: [
+      { name: "Shanil Patel", team: "Sales" },
+      { name: "Richard Li", team: "Customer Experience" },
+      { name: "Calvin Owens", team: "Customer Experience" },
+      { name: "Gastón Marchetta", team: "Engineering" },
+      { name: "Aninka Kalasiddhi Moore", team: "CX" },
+      { name: "Rodrigo Stecanella Mordecki", team: "Engineering" },
+      { name: "Rafaël Prève", team: "Product and Design" },
+      { name: "María Añez Castillo", team: "Marketing / Growth" },
+      { name: "Joshua McNeely", team: "Sales" },
+      { name: "Swen Gummer", team: "Sales" },
+    ],
+  },
+  {
+    group: 8,
+    people: [
+      { name: "Clyde Autin", team: "Customer Experience" },
+      { name: "Ryan Gniadek", team: "Customer Experience" },
+      { name: "Federico Moya Martin", team: "Engineering" },
+      { name: "Aaron Lit", team: "Customer Experience" },
+      { name: "Michael Dille", team: "Sales" },
+      { name: "Ashland Stansbury", team: "Sales" },
+      { name: "Camillo Facello Pereira", team: "Engineering" },
+      { name: "Terence Vrugtman", team: "Marketing" },
+      { name: "Margaux Kelley", team: "Sales" },
+    ],
+  },
+  {
+    group: 9,
+    people: [
+      { name: "Charles Ellenburg", team: "Customer Experience" },
+      { name: "Andreea-Elena Anicai", team: "CX" },
+      { name: "Martin Moron", team: "Engineering" },
+      { name: "Aayush Daftari", team: "G&A" },
+      { name: "Christy Roach", team: "Marketing" },
+      { name: "Charles Blanz", team: "Sales" },
+      { name: "Javier Morales Dobal", team: "Engineering" },
+      { name: "Daniel Arango", team: "G&A" },
+    ],
+  },
+  {
+    group: 10,
+    people: [
+      { name: "Katelyn Campbell", team: "Marketing" },
+      { name: "Rossibel Fernandez", team: "Sales" },
+      { name: "John Sellers", team: "Customer Experience" },
+      { name: "Felipe Cabezudo", team: "Engineering" },
+      { name: "Matthew Hammel", team: "G&A" },
+      { name: "Travis Lockwood", team: "Sales" },
+      { name: "Michael Blakely", team: "Customer Experience" },
+      { name: "Iccha Singh", team: "Sales" },
+      { name: "Jim Tan", team: "Marketing" },
+    ],
+  },
+  {
+    group: 11,
+    people: [
+      { name: "Julia Bracht", team: "Marketing" },
+      { name: "Anton O'Malley", team: "Customer Experience" },
+      { name: "Lucas Hulleberg", team: "Sales" },
+      { name: "Joel Fazecas", team: "Customer Experience" },
+      { name: "Viet Nguyen", team: "G&A" },
+      { name: "Justina Breen", team: "Product and Design" },
+      { name: "Connor Lievers", team: "Sales" },
+      { name: "Lily Baker", team: "Sales" },
+      { name: "Gabrielle Schoeffer", team: "Marketing / Growth" },
+      { name: "Nicholas Cziraky-Stanley", team: "Sales" },
+    ],
+  },
+  {
+    group: 12,
+    people: [
+      { name: "Aaron David Romero Colmenares", team: "Marketing / Growth" },
+      { name: "Vikramjit Kalkat", team: "Product and Design" },
+      { name: "Patrick Silveira Sendic", team: "Engineering" },
+      { name: "Henry Young", team: "Customer Experience" },
+      { name: "Micaela Lorenzo Petruskevicius", team: "Engineering" },
+      { name: "Addison Kim", team: "Sales" },
+      { name: "Shahbaz Mahmood", team: "Customer Experience" },
+      { name: "Alexandre Viegas", team: "Sales" },
+      { name: "Benyamin Holley", team: "Marketing" },
+    ],
+  },
+];

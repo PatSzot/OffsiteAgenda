@@ -15,9 +15,10 @@ const typeConfig: Record<SessionType, { label: string; color: string }> = {
 
 interface SessionCardProps {
   session: Session;
+  children?: React.ReactNode;
 }
 
-export function SessionCard({ session }: SessionCardProps) {
+export function SessionCard({ session, children }: SessionCardProps) {
   const config = typeConfig[session.type];
   const isUtility = ["break", "meal", "travel", "social"].includes(session.type);
 
@@ -102,6 +103,8 @@ export function SessionCard({ session }: SessionCardProps) {
           {session.location}
         </div>
       )}
+
+      {children}
     </article>
   );
 }
