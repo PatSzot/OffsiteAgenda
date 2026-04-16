@@ -46,7 +46,7 @@ export function AgendaSection() {
       </div>
 
       {/* Sticky day tabs */}
-      <div ref={tabsRef} className="sticky top-0 z-40 bg-cobalt border-b border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.18)]">
+      <div ref={tabsRef} className="sticky top-0 z-40 bg-cobalt border-b border-white/10">
         <div className="flex gap-0 overflow-x-auto scrollbar-none divide-x divide-white/10" role="tablist" aria-label="Days">
           {agenda.days.map((d) => (
             <button
