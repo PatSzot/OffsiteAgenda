@@ -9,6 +9,7 @@ import {
 } from "@react-pdf/renderer";
 import { agenda } from "@/data/agenda";
 import { dinnerGroups } from "@/data/dinnerGroups";
+import { thursDinnerGroups } from "@/data/thursDinnerGroups";
 
 // ─── Fonts ────────────────────────────────────────────────────────────────────
 Font.register({
@@ -273,7 +274,30 @@ function FaqPage() {
   );
 }
 
-// ─── Dinner Groups ────────────────────────────────────────────────────────────
+// ─── Thursday Dinner Groups ───────────────────────────────────────────────────
+function ThursDinnerGroupsPage() {
+  return (
+    <Page size="A4" style={s.contentPage} wrap>
+      <View style={s.sectionBar} fixed>
+        <Text style={s.sectionTitle}>Thursday Dinner Groups</Text>
+      </View>
+      <View style={s.dinnerGrid}>
+        {thursDinnerGroups.map((g) => (
+          <View key={g.leader} style={s.dinnerCard} wrap={false}>
+            <Text style={s.dinnerGroupNum}>{g.leader}&apos;s group{g.location ? `  ·  ${g.location}` : ""}{g.time ? `  ·  ${g.time}` : ""}</Text>
+            {g.members.map((name) => (
+              <View key={name} style={s.dinnerRow}>
+                <Text style={s.dinnerName}>{name}</Text>
+              </View>
+            ))}
+          </View>
+        ))}
+      </View>
+    </Page>
+  );
+}
+
+// ─── Friday Dinner Groups ─────────────────────────────────────────────────────
 function DinnerGroupsPage() {
   return (
     <Page size="A4" style={s.contentPage} wrap>
@@ -305,6 +329,7 @@ export function OffsitePdf({ logoSrc }: { logoSrc: string }) {
       <AgendaPages />
       <InfoPage />
       <FaqPage />
+      <ThursDinnerGroupsPage />
       <DinnerGroupsPage />
     </Document>
   );
