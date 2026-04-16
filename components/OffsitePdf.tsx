@@ -47,7 +47,7 @@ const C = {
 };
 
 const s = StyleSheet.create({
-  coverPage:    { backgroundColor: C.cobalt, flexDirection: "column", justifyContent: "space-between", paddingHorizontal: 36, paddingVertical: 36 },
+  coverPage:    { backgroundColor: C.cobalt, flexDirection: "column", justifyContent: "flex-end", paddingHorizontal: 36, paddingVertical: 36 },
   contentPage:  { backgroundColor: C.lavender, padding: 0 },
 
   coverLogo:    { width: 420 },
@@ -97,8 +97,8 @@ function InfoItem({ children }: { children: React.ReactNode }) {
 function Cover({ logoSrc }: { logoSrc: string }) {
   return (
     <Page size="A4" style={s.coverPage}>
-      <Image src={logoSrc} style={s.coverLogo} />
       <View>
+        <Image src={logoSrc} style={s.coverLogo} />
         <Text style={s.coverDates}>April 22–26</Text>
         <Text style={s.coverMeta}>Lisbon, Portugal  ·  Lisbon Marriott Hotel</Text>
       </View>
