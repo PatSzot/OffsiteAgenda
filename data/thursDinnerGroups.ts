@@ -67,6 +67,7 @@ export const thursDinnerGroups: ThursDinnerGroup[] = [
     members: ["Oshen Davidson", "Julia Bracht", "Ben", "Katelyn", "Maria Anez"],
     time: "7:30 PM",
     location: "Leoneta",
+    locationUrl: "https://reservation.umai.io/en/widget/leonetta",
   },
   {
     leader: "Ally",
