@@ -188,6 +188,16 @@ const infoSections = [
 
 const faqs = [
   {
+    id: "baggage",
+    question: "Will my room be ready when I arrive?",
+    answer: (
+      <div className="space-y-3">
+        <p>We have asked for early check-in but it is not guaranteed — worth asking when you arrive!</p>
+        <Tip>You can leave your bags with the valet until your room is ready.</Tip>
+      </div>
+    ),
+  },
+  {
     id: "language",
     question: "What language is spoken? Will English be enough?",
     answer: (
