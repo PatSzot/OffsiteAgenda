@@ -77,7 +77,7 @@ export const agenda: Agenda = {
           description: "Light bites and drinks to kick off the offsite.",
           type: "social",
           highlight: true,
-          location: "Lisbon Marriott Hotel",
+          location: "Lisbon Marriott Hotel Garden",
         },
       ],
     },
@@ -90,10 +90,11 @@ export const agenda: Agenda = {
       sessions: [
         {
           id: "thu-bus",
-          time: "Morning",
+          time: "8:00 AM",
+          endTime: "8:15 AM",
           title: "Bus Departure to MAAT",
           description:
-            "Transportation is provided. Be on time — everyone must be on the bus, no separate transport.",
+            "Be at the bus by 8:00 AM for check-in. Departure at 8:15 AM. Everyone must be on the bus — no separate transport.",
           type: "travel",
         },
         {
@@ -106,6 +107,15 @@ export const agenda: Agenda = {
           type: "keynote",
           highlight: true,
           location: "MAAT – Museum of Art, Architecture and Technology",
+        },
+        {
+          id: "thu-bus-return",
+          time: "6:15 PM",
+          endTime: "6:30 PM",
+          title: "Bus Return to Hotel",
+          description:
+            "Load up and check in at 6:15 PM. Departure back to hotel at 6:30 PM. Everyone must be on the bus.",
+          type: "travel",
         },
         {
           id: "thu-dinner",
@@ -171,10 +181,11 @@ export const agenda: Agenda = {
         },
         {
           id: "sat-bus",
-          time: "Before 6:00 PM",
+          time: "4:45 PM",
+          endTime: "5:15 PM",
           title: "Bus to Send-Off Party",
           description:
-            "Return to hotel to take the bus. Everyone must be on the bus — no separate transportation.",
+            "Check-in 4:45–5:00 PM. Departure at 5:15 PM. Everyone must be on the bus — no separate transportation.",
           type: "travel",
         },
         {
