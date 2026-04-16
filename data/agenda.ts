@@ -122,7 +122,7 @@ export const agenda: Agenda = {
           time: "Evening",
           title: "Dinner with Direct Teams",
           description:
-            "Dinner in your direct team group. Check the dinner groups link in Notion for your assignment.",
+            "Dinner in your direct team group. Select your leader below to see your group and restaurant.",
           type: "meal",
           highlight: true,
         },

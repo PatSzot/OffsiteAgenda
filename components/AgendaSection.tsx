@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { RiMapPinLine } from "@remixicon/react";
 import { SessionCard } from "@/components/SessionCard";
 import { DinnerGroupLookup } from "@/components/DinnerGroupLookup";
+import { ThursDinnerDiagram } from "@/components/ThursDinnerDiagram";
 import { agenda } from "@/data/agenda";
 
 export function AgendaSection() {
@@ -104,6 +105,7 @@ export function AgendaSection() {
             {day.sessions.map((session) => (
               <div key={session.id} id={session.id}>
                 <SessionCard session={session}>
+                  {session.id === "thu-dinner" && <ThursDinnerDiagram />}
                   {session.id === "fri-dinner" && <DinnerGroupLookup />}
                 </SessionCard>
               </div>
