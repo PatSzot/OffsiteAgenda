@@ -327,10 +327,10 @@ export function OffsitePdf({ logoSrc }: { logoSrc: string }) {
     <Document title="AirOps Lisbon Offsite 2026" author="AirOps">
       <Cover logoSrc={logoSrc} />
       <AgendaPages />
-      <InfoPage />
-      <FaqPage />
       <ThursDinnerGroupsPage />
       <DinnerGroupsPage />
+      <InfoPage />
+      <FaqPage />
     </Document>
   );
 }
