@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { RiArrowDownSLine, RiUserCommunityLine, RiSearchLine, RiArrowRightUpBoxLine } from "@remixicon/react";
+import { RiArrowDownSLine, RiUserCommunityLine, RiSearchLine, RiArrowRightUpLine } from "@remixicon/react";
 import { thursDinnerGroups, type ThursDinnerGroup } from "@/data/thursDinnerGroups";
 
 function LocationLink({ group }: { group: ThursDinnerGroup }) {
@@ -16,7 +16,7 @@ function LocationLink({ group }: { group: ThursDinnerGroup }) {
         className="inline-flex items-center gap-1 underline underline-offset-2 hover:opacity-70 transition-opacity"
       >
         {label}
-        <RiArrowRightUpBoxLine size={11} aria-hidden />
+        <RiArrowRightUpLine size={11} aria-hidden />
       </a>
     );
   }
