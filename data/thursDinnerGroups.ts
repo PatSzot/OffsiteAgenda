@@ -74,5 +74,6 @@ export const thursDinnerGroups: ThursDinnerGroup[] = [
     members: ["Josh Spilker", "Ally Rubin", "Jim Tan", "Gabrielle", "Terence", "Christy"],
     time: "7:45 PM",
     location: "Rosamar",
+    locationUrl: "https://reservation.umai.io/en/widget/rosamar",
   },
 ];
