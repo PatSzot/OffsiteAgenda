@@ -1,8 +1,27 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { RiArrowDownSLine, RiUserCommunityLine, RiSearchLine } from "@remixicon/react";
-import { thursDinnerGroups } from "@/data/thursDinnerGroups";
+import { RiArrowDownSLine, RiUserCommunityLine, RiSearchLine, RiArrowRightUpBoxLine } from "@remixicon/react";
+import { thursDinnerGroups, type ThursDinnerGroup } from "@/data/thursDinnerGroups";
+
+function LocationLink({ group }: { group: ThursDinnerGroup }) {
+  const label = [group.time, group.location].filter(Boolean).join(" · ");
+  if (!label) return null;
+  if (group.locationUrl) {
+    return (
+      <a
+        href={group.locationUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1 underline underline-offset-2 hover:opacity-70 transition-opacity"
+      >
+        {label}
+        <RiArrowRightUpBoxLine size={11} aria-hidden />
+      </a>
+    );
+  }
+  return <span>{label}</span>;
+}
 
 export function ThursDinnerDiagram() {
   const [open, setOpen] = useState(false);
@@ -76,7 +95,7 @@ export function ThursDinnerDiagram() {
             </ul>
             {(result.group.time || result.group.location) && (
               <p className="font-mono text-label-sm text-white/40 border-t border-white/10 pt-3">
-                {[result.group.time, result.group.location].filter(Boolean).join(" · ")}
+                <LocationLink group={result.group} />
               </p>
             )}
           </div>
@@ -126,7 +145,7 @@ export function ThursDinnerDiagram() {
                   </span>
                   <span className="font-sans text-body-sm text-[#1B1B8F]">{member}</span>
                   <span className="font-mono text-label-sm text-[#1B1B8F]/40 text-right whitespace-nowrap">
-                    {mi === 0 ? [g.time, g.location].filter(Boolean).join(" · ") : ""}
+                    {mi === 0 ? <LocationLink group={g} /> : ""}
                   </span>
                 </div>
               ))
