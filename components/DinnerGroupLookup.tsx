@@ -106,9 +106,10 @@ export function DinnerGroupLookup() {
 
         {allOpen && (
           <div className="border-t border-lavender-dark">
-            {/* Header row */}
-            <div className="grid grid-cols-[auto_1fr_auto] gap-x-4 px-5 py-2 bg-lavender-dark">
-              <span className="font-mono text-label-sm text-[#1B1B8F]/40 uppercase tracking-widest">Group</span>
+            {/* Header row — must match 4-col data grid */}
+            <div className="grid grid-cols-[2rem_1.5rem_1fr_auto] gap-x-3 px-5 py-2 bg-lavender-dark">
+              <span className="font-mono text-label-sm text-[#1B1B8F]/40 uppercase tracking-widest">Grp</span>
+              <span />
               <span className="font-mono text-label-sm text-[#1B1B8F]/40 uppercase tracking-widest">Name</span>
               <span className="font-mono text-label-sm text-[#1B1B8F]/40 uppercase tracking-widest">Team</span>
             </div>
@@ -118,16 +119,16 @@ export function DinnerGroupLookup() {
                 {g.people.map((person, pi) => (
                   <div
                     key={person.name}
-                    className={`grid grid-cols-[auto_auto_1fr_auto] gap-x-3 px-5 py-2 items-baseline border-t border-lavender-dark/60 ${
+                    className={`grid grid-cols-[2rem_1.5rem_1fr_auto] gap-x-3 px-5 py-2 items-baseline border-t border-lavender-dark/60 ${
                       gi % 2 === 0 ? "bg-white" : "bg-lavender/50"
                     }`}
                   >
-                    {/* Group number — only on first row of each group */}
-                    <span className="font-mono text-label-sm text-cobalt w-8">
+                    {/* Group number — only on first row */}
+                    <span className="font-mono text-label-sm text-cobalt">
                       {pi === 0 ? `G${g.group}` : ""}
                     </span>
                     {/* Per-group row number */}
-                    <span className="font-mono text-label-sm text-[#1B1B8F]/25 w-4 text-right">
+                    <span className="font-mono text-label-sm text-[#1B1B8F]/25 text-right">
                       {pi + 1}
                     </span>
                     <span className="font-sans text-body-sm text-[#1B1B8F]">{person.name}</span>

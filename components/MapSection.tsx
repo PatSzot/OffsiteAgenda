@@ -41,15 +41,15 @@ export function MapSection() {
   return (
     <section className="bg-cobalt">
       {/* Map */}
-      <div className="relative w-full h-[480px] overflow-hidden">
+      <div className="relative w-full h-[300px] sm:h-[420px] md:h-[480px] overflow-hidden">
         <LeafletMap />
         {/* Cobalt tint overlay */}
         <div className="absolute inset-0 bg-cobalt/20 mix-blend-multiply pointer-events-none" />
 
         {/* Taxi callout — top right */}
-        <div className="absolute top-6 right-6 bg-cobalt text-white px-5 py-4 shadow-lg max-w-[220px]">
+        <div className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-cobalt text-white px-4 py-3 sm:px-5 sm:py-4 shadow-lg max-w-[180px] sm:max-w-[220px]">
           <p className="font-mono text-label-sm uppercase tracking-widest text-white/50 mb-1">Airport → Hotel</p>
-          <p className="font-serif text-display-md leading-none mb-1">15–25 min</p>
+          <p className="font-serif text-[1.5rem] sm:text-display-md leading-none mb-1">15–25 min</p>
           <p className="font-mono text-label-sm text-white/60">~€15–20 · Uber / Bolt</p>
         </div>
       </div>
@@ -62,13 +62,13 @@ export function MapSection() {
             href={loc.mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="group px-8 md:px-12 py-10 flex flex-col gap-3 hover:bg-white/5 transition-colors"
+            className="group px-6 sm:px-8 md:px-12 py-7 sm:py-10 flex flex-col gap-2.5 hover:bg-white/5 transition-colors"
           >
             <div className="flex items-center justify-between">
               <p className="font-mono text-label-sm text-white/40 uppercase tracking-widest">{loc.label}</p>
               <span className="font-mono text-label-sm text-cobalt bg-white px-2 py-0.5">{loc.tag}</span>
             </div>
-            <p className="font-serif text-display-md text-white leading-tight">{loc.name}</p>
+            <p className="font-serif text-[1.375rem] sm:text-display-md text-white leading-tight">{loc.name}</p>
             <p className="font-sans text-body-sm text-white/50">{loc.address}</p>
             <p className="font-mono text-label-sm text-white/30 mt-auto">{loc.detail}</p>
             <p className="font-mono text-label-sm text-white/40 group-hover:text-white transition-colors">

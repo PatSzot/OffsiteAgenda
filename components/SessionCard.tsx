@@ -53,7 +53,7 @@ export function SessionCard({ session, children }: SessionCardProps) {
         <span className={`badge ${config.color}`}>{config.label}</span>
       </div>
 
-      <h3 className="text-display-md font-serif mb-3 leading-tight text-[#1B1B8F]">
+      <h3 className="text-[1.375rem] sm:text-display-md font-serif mb-3 leading-tight text-[#1B1B8F]">
         {session.title}
       </h3>
 
@@ -99,7 +99,7 @@ export function SessionCard({ session, children }: SessionCardProps) {
       {/* Location */}
       {session.location && (
         <div className="mt-5 pt-4 flex items-center gap-2 font-mono text-label-sm border-t border-lavender-dark text-[#1B1B8F]/50">
-          <RiMapPinLine size={12} aria-hidden />
+          <RiMapPinLine size={14} aria-hidden />
           {session.location}
         </div>
       )}

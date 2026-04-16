@@ -17,7 +17,7 @@ function Tip({ children }: { children: React.ReactNode }) {
 }
 
 function Bullet() {
-  return <span className="mt-2 w-1.5 h-1.5 rounded-full bg-indigo-brand/30 shrink-0 block" />;
+  return <span className="mt-2 w-2 h-2 rounded-full bg-indigo-brand/30 shrink-0 block" />;
 }
 
 
@@ -336,13 +336,13 @@ export default function InfoFaqPage() {
         {/* Important Info */}
         <div className="border-b border-indigo-brand/15 px-8 md:px-12 lg:px-16 py-12">
           <p className="label text-indigo-brand/40 mb-8">Important Info</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
             {infoSections.map((section) => (
-              <div key={section.id} className="bg-white border border-lavender-dark p-6 md:p-8 transition-colors duration-200 hover:border-cobalt/30">
-                <p className="text-3xl mb-3">
+              <div key={section.id} className="bg-white border border-lavender-dark p-5 md:p-8 transition-colors duration-200 hover:border-cobalt/30">
+                <p className="text-2xl mb-3">
                   {section.emoji}
                 </p>
-                <h2 className="font-serif text-display-md text-indigo-brand mb-5 leading-tight">
+                <h2 className="font-serif text-[1.25rem] sm:text-display-md text-indigo-brand mb-4 leading-tight">
                   {section.title}
                 </h2>
                 <div className="text-body-md text-indigo-brand/70">
@@ -364,9 +364,9 @@ export default function InfoFaqPage() {
                   <button
                     onClick={() => toggle(faq.id)}
                     aria-expanded={isOpen}
-                    className="w-full flex items-start justify-between gap-4 p-6 md:p-8 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt focus-visible:ring-inset"
+                    className="w-full flex items-start justify-between gap-3 p-5 md:p-7 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt focus-visible:ring-inset"
                   >
-                    <h2 className="font-serif text-display-md text-indigo-brand leading-tight">
+                    <h2 className="font-serif text-[1.25rem] sm:text-display-md text-indigo-brand leading-tight">
                       {faq.question}
                     </h2>
                     <RiArrowDownSLine
@@ -377,7 +377,7 @@ export default function InfoFaqPage() {
                   </button>
 
                   {isOpen && (
-                    <div className="px-6 md:px-8 pb-6 md:pb-8 text-body-md text-indigo-brand/70 border-t border-lavender-dark pt-5 animate-slide-up">
+                    <div className="px-5 md:px-7 pb-5 md:pb-7 text-body-md text-indigo-brand/70 border-t border-lavender-dark pt-5 animate-slide-up">
                       {faq.answer}
                     </div>
                   )}

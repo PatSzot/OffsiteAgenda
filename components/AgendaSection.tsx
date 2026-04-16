@@ -55,7 +55,7 @@ export function AgendaSection() {
               aria-selected={d.id === activeDay}
               onClick={() => scrollToDay(d.id)}
               className={`
-                shrink-0 px-8 py-4 font-mono text-label-lg uppercase tracking-widest transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset
+                shrink-0 px-5 py-3 md:px-8 md:py-4 font-mono text-label-sm md:text-label-lg uppercase tracking-widest transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset
                 ${d.id === activeDay
                   ? "bg-white text-cobalt"
                   : "text-white/70 hover:text-white hover:bg-white/10"
@@ -94,7 +94,7 @@ export function AgendaSection() {
             </div>
             {day.location && (
               <p className="font-mono text-label-sm text-indigo-brand/50 flex items-center gap-1.5">
-                <RiMapPinLine size={12} aria-hidden />
+                <RiMapPinLine size={14} aria-hidden />
                 {day.location}
               </p>
             )}

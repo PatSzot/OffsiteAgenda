@@ -16,7 +16,7 @@ function LocationLink({ group }: { group: ThursDinnerGroup }) {
         className="inline-flex items-center gap-1 underline underline-offset-2 hover:opacity-70 transition-opacity"
       >
         {label}
-        <RiArrowRightUpLine size={11} aria-hidden />
+        <RiArrowRightUpLine size={12} aria-hidden className="shrink-0" />
       </a>
     );
   }
@@ -144,7 +144,7 @@ export function ThursDinnerDiagram() {
                     {mi + 1}
                   </span>
                   <span className="font-sans text-body-sm text-[#1B1B8F]">{member}</span>
-                  <span className="font-mono text-label-sm text-[#1B1B8F]/40 text-right whitespace-nowrap">
+                  <span className="font-mono text-label-sm text-[#1B1B8F]/40 text-right max-w-[140px] sm:max-w-none">
                     {mi === 0 ? <LocationLink group={g} /> : ""}
                   </span>
                 </div>
