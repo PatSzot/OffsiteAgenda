@@ -91,7 +91,6 @@ export const agenda: Agenda = {
         {
           id: "thu-bus",
           time: "8:00 AM",
-          endTime: "8:15 AM",
           title: "Bus Departure to MAAT",
           description:
             "Be at the bus by 8:00 AM for check-in. Departure at 8:15 AM. Everyone must be on the bus — no separate transport.",
@@ -112,7 +111,6 @@ export const agenda: Agenda = {
         {
           id: "thu-bus-return",
           time: "6:15 PM",
-          endTime: "6:30 PM",
           title: "Bus Return to Hotel",
           description:
             "Load up and check in at 6:15 PM. Departure back to hotel at 6:30 PM. Everyone must be on the bus.",
@@ -184,7 +182,6 @@ export const agenda: Agenda = {
         {
           id: "sat-bus",
           time: "4:45 PM",
-          endTime: "5:15 PM",
           title: "Bus to Send-Off Party",
           description:
             "Check-in 4:45–5:00 PM. Departure at 5:15 PM. Everyone must be on the bus — no separate transportation.",
