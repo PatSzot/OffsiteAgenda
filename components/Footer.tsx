@@ -4,7 +4,7 @@ import { agenda } from "@/data/agenda";
 export function Footer() {
   return (
     <footer style={{ backgroundColor: "#0F0F57" }} className="overflow-hidden">
-      <div className="border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 px-8 md:px-12 lg:px-16 py-6">
+      <div className="border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 px-8 md:px-12 lg:px-16 py-3">
         <p className="font-mono text-label-sm text-white/30 uppercase tracking-widest">
           {agenda.eventName}
         </p>
@@ -22,7 +22,7 @@ export function Footer() {
           </p>
         </div>
       </div>
-      <div className="px-8 md:px-12 lg:px-16 pb-8 md:pb-12 lg:pb-16">
+      <div className="px-8 md:px-12 lg:px-16 pb-4 md:pb-6 lg:pb-8">
         <Image
           src="/OffsiteLogo.png"
           alt="AirOps Lisbon 2026"
