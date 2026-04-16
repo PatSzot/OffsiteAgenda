@@ -15,6 +15,8 @@ export function Hero() {
           loop={false}
           autoplay={true}
           className="w-full h-auto"
+          style={{ willChange: "transform" }}
+          aria-hidden
         />
       </div>
 

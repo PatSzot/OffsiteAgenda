@@ -43,7 +43,7 @@ export function AgendaSection() {
       </div>
 
       {/* Sticky day tabs */}
-      <div ref={tabsRef} className="sticky top-0 z-40 bg-cobalt border-b border-white/10">
+      <div ref={tabsRef} className="sticky top-0 z-40 bg-cobalt border-b border-white/10 shadow-[0_4px_24px_rgba(0,0,0,0.18)]">
         <div className="flex gap-0 overflow-x-auto scrollbar-none divide-x divide-white/10" role="tablist" aria-label="Days">
           {agenda.days.map((d) => (
             <button
@@ -52,7 +52,7 @@ export function AgendaSection() {
               aria-selected={d.id === activeDay}
               onClick={() => scrollToDay(d.id)}
               className={`
-                shrink-0 px-8 py-4 font-mono text-label-lg uppercase tracking-widest transition-colors
+                shrink-0 px-8 py-4 font-mono text-label-lg uppercase tracking-widest transition-colors duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset
                 ${d.id === activeDay
                   ? "bg-white text-cobalt"
                   : "text-white/70 hover:text-white hover:bg-white/10"

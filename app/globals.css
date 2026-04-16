@@ -104,6 +104,21 @@
     background-color: var(--color-cobalt);
     color: var(--color-white);
   }
+
+  /* Focus-visible ring — keyboard nav */
+  :focus-visible {
+    outline: 2px solid var(--color-cobalt);
+    outline-offset: 3px;
+  }
+
+  /* Disable animations for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
 /* ─── Utility Components ────────────────────────────────────────────────── */

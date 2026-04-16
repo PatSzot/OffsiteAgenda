@@ -344,7 +344,7 @@ export default function InfoFaqPage() {
           <p className="label text-indigo-brand/40 mb-8">Important Info</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {infoSections.map((section) => (
-              <div key={section.id} className="bg-white border border-lavender-dark p-6 md:p-8">
+              <div key={section.id} className="bg-white border border-lavender-dark p-6 md:p-8 transition-colors duration-200 hover:border-cobalt/30">
                 <p className="text-3xl mb-3">
                   {section.emoji}
                 </p>
@@ -366,11 +366,11 @@ export default function InfoFaqPage() {
             {faqs.map((faq) => {
               const isOpen = openId === faq.id;
               return (
-                <div key={faq.id} className="bg-white border border-lavender-dark">
+                <div key={faq.id} className="bg-white border border-lavender-dark transition-colors duration-200 hover:border-cobalt/30">
                   <button
                     onClick={() => toggle(faq.id)}
                     aria-expanded={isOpen}
-                    className="w-full flex items-start justify-between gap-4 p-6 md:p-8 text-left"
+                    className="w-full flex items-start justify-between gap-4 p-6 md:p-8 text-left cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt focus-visible:ring-inset"
                   >
                     <h2 className="font-serif text-display-md text-indigo-brand leading-tight">
                       {faq.question}

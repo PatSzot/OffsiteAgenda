@@ -40,7 +40,7 @@ export function SessionCard({ session }: SessionCardProps) {
 
   // Full card for talks, keynotes, workshops, panels, highlighted sessions
   return (
-    <article className="group p-6 md:p-8 bg-white border border-lavender-dark transition-shadow hover:shadow-md">
+    <article className="group p-6 md:p-8 bg-white border border-lavender-dark transition-colors duration-200 hover:border-cobalt/30">
       <div className="flex items-start justify-between gap-4 mb-4">
         <time className="font-mono text-label-lg uppercase tracking-widest text-[#1B1B8F]/50">
           {session.time}
