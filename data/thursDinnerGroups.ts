@@ -76,4 +76,24 @@ export const thursDinnerGroups: ThursDinnerGroup[] = [
     location: "Rosamar",
     locationUrl: "https://reservation.umai.io/en/widget/rosamar",
   },
+  // ── Prod / Eng groups ──────────────────────────────────────────
+  {
+    leader: "Nicolas Tinte",
+    members: ["Camillo Facello", "Ken Li", "Johannes Herter", "Ale Miralles", "Dillon", "Agustin Costa", "Bilal Siddiqui"],
+    time: "8:00 PM",
+    location: "Downunder",
+    locationUrl: "https://downunder.pt",
+  },
+  {
+    leader: "Berna Gonzalez",
+    members: ["Vikramjit Kalkat", "Micaela Lorenzo", "Rafaël Prève", "Juanma", "Patrick Silveira", "Facu Palavecino", "Rodrigo"],
+  },
+  {
+    leader: "Mahir Yavuz",
+    members: ["Martin Moron", "Kimia Zargari", "Mauro Centurion", "Victoria Madrid", "Justina Breen", "Juan Aparicio", "Alex Hallenbeck"],
+  },
+  {
+    leader: "Javier Morales",
+    members: ["Santiago Goycoechea", "Amr Shafik", "Felipe Cabezudo", "Ash Krishnan", "Federico Moya", "Kajari Ghosh"],
+  },
 ];
