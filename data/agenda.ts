@@ -166,7 +166,7 @@ export const agenda: Agenda = {
           time: "Daytime",
           title: "Optional AirOps Activity",
           description:
-            "AirOps Flavortown-style fun. No assigned groups — mix and explore with whoever you'd like. More details coming soon.",
+            "AirOps Flavortown-style fun. No assigned groups — mix and explore with whoever you'd like. More details coming soon. ⚠️ CAUTION: Be careful when riding bikes. Only ride down by the river — anywhere else is a near-death experience.",
           type: "social",
           highlight: true,
         },
