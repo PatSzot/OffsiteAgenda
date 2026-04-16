@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { RiMapPinLine } from "@remixicon/react";
 import { SessionCard } from "@/components/SessionCard";
 import { agenda } from "@/data/agenda";
 
@@ -91,7 +92,7 @@ export function AgendaSection() {
             </div>
             {day.location && (
               <p className="font-mono text-label-sm text-indigo-brand/50 flex items-center gap-1.5">
-                <PinIcon />
+                <RiMapPinLine size={12} aria-hidden />
                 {day.location}
               </p>
             )}
@@ -111,11 +112,3 @@ export function AgendaSection() {
   );
 }
 
-function PinIcon() {
-  return (
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
-      <path d="M6 1a3 3 0 0 1 3 3c0 2-3 7-3 7S3 6 3 4a3 3 0 0 1 3-3Z" stroke="currentColor" strokeWidth="1.2" fill="none" />
-      <circle cx="6" cy="4" r="1" fill="currentColor" />
-    </svg>
-  );
-}

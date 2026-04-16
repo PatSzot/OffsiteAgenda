@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^4.4.1",
+    "@remixicon/react": "^4.9.0",
     "@types/leaflet": "^1.9.21",
     "autoprefixer": "^10.4.24",
     "html2canvas": "^1.4.1",

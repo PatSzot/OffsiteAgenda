@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { RiMenuLine, RiCloseLine } from "@remixicon/react";
 
 interface NavProps {
   variant?: "light" | "dark";
@@ -74,7 +75,7 @@ export function Nav({ variant = "light", fixed = true }: NavProps) {
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
         >
-          {menuOpen ? <XIcon /> : <MenuIcon />}
+          {menuOpen ? <RiCloseLine size={22} aria-hidden /> : <RiMenuLine size={22} aria-hidden />}
         </button>
       </nav>
 
@@ -104,28 +105,3 @@ export function Nav({ variant = "light", fixed = true }: NavProps) {
   );
 }
 
-function MenuIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden>
-      <path
-        d="M3 5.5h16M3 11h16M3 16.5h16"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function XIcon() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden>
-      <path
-        d="M17 5L5 17M5 5l12 12"
-        stroke="currentColor"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}

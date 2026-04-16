@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { RiDownloadLine, RiLoaderLine } from "@remixicon/react";
 
 async function toWhitePng(src: string): Promise<string> {
   const img = new window.Image();
@@ -56,32 +57,17 @@ export function DownloadButton() {
     >
       {status === "loading" ? (
         <>
-          <Spinner />
+          <RiLoaderLine size={16} aria-hidden className="animate-spin" />
           Generating…
         </>
       ) : (
         <>
-          <DownloadIcon />
+          <RiDownloadLine size={16} aria-hidden />
           Download site as .PDF
         </>
       )}
+
     </button>
   );
 }
 
-function DownloadIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-      <path d="M8 2v8M5 7l3 3 3-3M2 12h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-function Spinner() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden className="animate-spin">
-      <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.3" />
-      <path d="M8 2a6 6 0 0 1 6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    </svg>
-  );
-}

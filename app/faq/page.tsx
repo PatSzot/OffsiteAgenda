@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { RiArrowDownSLine } from "@remixicon/react";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
@@ -19,13 +20,6 @@ function Bullet() {
   return <span className="mt-2 w-1.5 h-1.5 rounded-full bg-indigo-brand/30 shrink-0 block" />;
 }
 
-function ChevronIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden>
-      <path d="M5 7.5l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
 
 // ─── Important Info ───────────────────────────────────────────────────────────
 
@@ -375,12 +369,11 @@ export default function InfoFaqPage() {
                     <h2 className="font-serif text-display-md text-indigo-brand leading-tight">
                       {faq.question}
                     </h2>
-                    <span
-                      className={`mt-1 shrink-0 text-indigo-brand/40 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                    <RiArrowDownSLine
+                      size={20}
                       aria-hidden
-                    >
-                      <ChevronIcon />
-                    </span>
+                      className={`mt-1 shrink-0 text-indigo-brand/40 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                    />
                   </button>
 
                   {isOpen && (

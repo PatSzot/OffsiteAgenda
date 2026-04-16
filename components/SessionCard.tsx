@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { RiMapPinLine } from "@remixicon/react";
 import type { Session, SessionType } from "@/data/agenda";
 
 const typeConfig: Record<SessionType, { label: string; color: string }> = {
@@ -97,7 +98,7 @@ export function SessionCard({ session }: SessionCardProps) {
       {/* Location */}
       {session.location && (
         <div className="mt-5 pt-4 flex items-center gap-2 font-mono text-label-sm border-t border-lavender-dark text-[#1B1B8F]/50">
-          <PinIcon />
+          <RiMapPinLine size={12} aria-hidden />
           {session.location}
         </div>
       )}
@@ -105,11 +106,3 @@ export function SessionCard({ session }: SessionCardProps) {
   );
 }
 
-function PinIcon() {
-  return (
-    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden>
-      <path d="M6 1a3 3 0 0 1 3 3c0 2-3 7-3 7S3 6 3 4a3 3 0 0 1 3-3Z" stroke="currentColor" strokeWidth="1.2" fill="none" />
-      <circle cx="6" cy="4" r="1" fill="currentColor" />
-    </svg>
-  );
-}
