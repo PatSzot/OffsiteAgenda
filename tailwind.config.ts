@@ -38,10 +38,10 @@ const config: Config = {
         "display-lg": ["clamp(2rem, 5vw, 4.5rem)", { lineHeight: "1", letterSpacing: "-0.035em" }],
         "display-md": ["clamp(1.5rem, 3vw, 2.75rem)", { lineHeight: "1.05", letterSpacing: "-0.03em" }],
         // Body scale
-        "body-xl": ["1.25rem", { lineHeight: "1.5" }],
-        "body-lg": ["1.125rem", { lineHeight: "1.55" }],
-        "body-md": ["1rem", { lineHeight: "1.6" }],
-        "body-sm": ["0.875rem", { lineHeight: "1.5" }],
+        "body-xl": ["1.3125rem", { lineHeight: "1.5" }],
+        "body-lg": ["1.1875rem", { lineHeight: "1.55" }],
+        "body-md": ["1.0625rem", { lineHeight: "1.6" }],
+        "body-sm": ["0.9375rem", { lineHeight: "1.5" }],
         // Label / mono scale
         "label-lg": ["0.875rem", { lineHeight: "1.2", letterSpacing: "0.08em" }],
         "label-sm": ["0.75rem", { lineHeight: "1.2", letterSpacing: "0.1em" }],
