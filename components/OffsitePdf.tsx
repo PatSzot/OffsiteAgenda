@@ -51,7 +51,7 @@ const s = StyleSheet.create({
   coverPage:    { backgroundColor: C.cobalt, flexDirection: "column", justifyContent: "flex-end", paddingHorizontal: 36, paddingVertical: 36 },
   contentPage:  { backgroundColor: C.lavender, padding: 0 },
 
-  coverLogo:    { width: 420 },
+  coverLogo:    { width: 480, marginBottom: 20 },
   coverDates:   { fontFamily: "Serrif", fontSize: 44, color: C.white, marginBottom: 10 },
   coverMeta:    { fontFamily: "SaansMono", fontSize: 11, color: "#FFFFFF60", letterSpacing: 1.5, textTransform: "uppercase" },
 
