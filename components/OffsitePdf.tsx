@@ -8,6 +8,7 @@ import {
   Font,
 } from "@react-pdf/renderer";
 import { agenda } from "@/data/agenda";
+import { dinnerGroups } from "@/data/dinnerGroups";
 
 // ─── Fonts ────────────────────────────────────────────────────────────────────
 Font.register({
@@ -82,6 +83,13 @@ const s = StyleSheet.create({
   faqItem: { marginBottom: 16, paddingBottom: 16, borderBottomWidth: 1, borderBottomColor: C.lavDark },
   faqQ:    { fontFamily: "Serrif", fontSize: 15, color: C.indigo, marginBottom: 6 },
   faqA:    { fontFamily: "Saans", fontSize: 11, fontWeight: 500, color: "#2323A599", lineHeight: 1.55 },
+
+  dinnerGrid:     { paddingHorizontal: 36, paddingTop: 18, paddingBottom: 8, flexDirection: "row", flexWrap: "wrap", gap: 14 },
+  dinnerCard:     { width: "47%", backgroundColor: C.white, borderWidth: 1, borderColor: C.lavDark, padding: 12, marginBottom: 0 },
+  dinnerGroupNum: { fontFamily: "SaansMono", fontSize: 9, color: C.cobalt, letterSpacing: 1.5, textTransform: "uppercase", marginBottom: 8 },
+  dinnerRow:      { flexDirection: "row", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 },
+  dinnerName:     { fontFamily: "Saans", fontSize: 10, fontWeight: 500, color: C.indigo, flex: 1, paddingRight: 6 },
+  dinnerTeam:     { fontFamily: "SaansMono", fontSize: 8, color: "#2323A560", letterSpacing: 0.5 },
 });
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -265,6 +273,30 @@ function FaqPage() {
   );
 }
 
+// ─── Dinner Groups ────────────────────────────────────────────────────────────
+function DinnerGroupsPage() {
+  return (
+    <Page size="A4" style={s.contentPage} wrap>
+      <View style={s.sectionBar} fixed>
+        <Text style={s.sectionTitle}>Friday Dinner Groups</Text>
+      </View>
+      <View style={s.dinnerGrid}>
+        {dinnerGroups.map((g) => (
+          <View key={g.group} style={s.dinnerCard} wrap={false}>
+            <Text style={s.dinnerGroupNum}>Group {g.group}</Text>
+            {g.people.map((p) => (
+              <View key={p.name} style={s.dinnerRow}>
+                <Text style={s.dinnerName}>{p.name}</Text>
+                <Text style={s.dinnerTeam}>{p.team}</Text>
+              </View>
+            ))}
+          </View>
+        ))}
+      </View>
+    </Page>
+  );
+}
+
 // ─── Document ─────────────────────────────────────────────────────────────────
 export function OffsitePdf({ logoSrc }: { logoSrc: string }) {
   return (
@@ -273,6 +305,7 @@ export function OffsitePdf({ logoSrc }: { logoSrc: string }) {
       <AgendaPages />
       <InfoPage />
       <FaqPage />
+      <DinnerGroupsPage />
     </Document>
   );
 }
