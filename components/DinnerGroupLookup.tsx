@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { RiSearchLine, RiGroupLine, RiArrowDownSLine } from "@remixicon/react";
+import { RiSearchLine, RiGroupLine, RiArrowDownSLine, RiUserCommunityLine } from "@remixicon/react";
 import { dinnerGroups } from "@/data/dinnerGroups";
 
 export function DinnerGroupLookup() {
@@ -93,7 +93,8 @@ export function DinnerGroupLookup() {
           aria-expanded={allOpen}
           className="w-full flex items-center justify-between gap-4 px-5 py-3.5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cobalt focus-visible:ring-inset"
         >
-          <span className="font-mono text-label-sm text-[#1B1B8F]/50 uppercase tracking-widest">
+          <span className="flex items-center gap-2 font-mono text-label-sm text-[#1B1B8F]/50 uppercase tracking-widest">
+            <RiUserCommunityLine size={14} aria-hidden />
             All groups
           </span>
           <RiArrowDownSLine
