@@ -7,7 +7,7 @@ import { DownloadButton } from "@/components/DownloadButton";
 
 export function Hero() {
   return (
-    <section className="min-h-[60vh] sm:min-h-screen bg-lavender flex flex-col">
+    <section className="min-h-[40vh] sm:min-h-screen bg-lavender flex flex-col">
       {/* Full-bleed wordmark */}
       <div className="w-full">
         <Lottie
