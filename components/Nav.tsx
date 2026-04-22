@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { RiMenuLine, RiCloseLine } from "@remixicon/react";
+import { RiMenuLine, RiCloseLine, RiArrowRightUpLine } from "@remixicon/react";
 
 interface NavProps {
   variant?: "light" | "dark";
@@ -61,6 +61,15 @@ export function Nav({ variant = "light", fixed = true }: NavProps) {
               {label}
             </Link>
           ))}
+          <a
+            href="https://lisbon-tarot-omega.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`flex items-center gap-1.5 px-5 py-2 rounded-full font-mono text-label-lg uppercase tracking-widest transition-all duration-200 ${isDark ? "text-white/80 hover:text-white hover:bg-white/15" : "text-indigo-brand hover:bg-cobalt/10"}`}
+          >
+            Tarot Reading
+            <RiArrowRightUpLine size={13} aria-hidden />
+          </a>
         </div>
 
         {/* Mobile hamburger */}
@@ -99,6 +108,15 @@ export function Nav({ variant = "light", fixed = true }: NavProps) {
               {label}
             </Link>
           ))}
+          <a
+            href="https://lisbon-tarot-omega.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`flex items-center gap-1.5 px-5 py-2 rounded-full font-mono text-label-lg uppercase tracking-widest transition-all duration-200 ${isDark ? "text-white/80 hover:text-white hover:bg-white/15" : "text-indigo-brand hover:bg-cobalt/10"}`}
+          >
+            Tarot Reading
+            <RiArrowRightUpLine size={13} aria-hidden />
+          </a>
         </div>
       )}
     </header>
