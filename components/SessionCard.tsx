@@ -2,6 +2,17 @@ import Image from "next/image";
 import { RiMapPinLine } from "@remixicon/react";
 import type { Session, SessionType } from "@/data/agenda";
 
+function to24hr(time: string): string | null {
+  const match = time.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
+  if (!match) return null;
+  let h = parseInt(match[1]);
+  const m = match[2];
+  const period = match[3].toUpperCase();
+  if (period === "AM" && h === 12) h = 0;
+  if (period === "PM" && h !== 12) h += 12;
+  return `${String(h).padStart(2, "0")}:${m}`;
+}
+
 const typeConfig: Record<SessionType, { label: string; color: string }> = {
   keynote:  { label: "Keynote",  color: "bg-[#1B1B8F] text-white" },
   talk:     { label: "Talk",     color: "bg-[#1B1B8F]/80 text-white" },
@@ -28,6 +39,9 @@ export function SessionCard({ session, children }: SessionCardProps) {
       <div className="flex items-center gap-4 py-4 px-5 bg-white border border-lavender-dark group">
         <time className="font-mono text-label-lg text-[#1B1B8F]/50 w-14 shrink-0">
           {session.time}
+          {to24hr(session.time) && (
+            <span className="block text-[#1B1B8F]/25">{to24hr(session.time)}</span>
+          )}
         </time>
         <span className="flex-1 font-sans text-body-sm text-[#1B1B8F]/70">{session.title}</span>
         <span className={`badge ${config.color} text-label-sm`}>{config.label}</span>
@@ -48,6 +62,14 @@ export function SessionCard({ session, children }: SessionCardProps) {
           {session.time}
           {session.endTime && (
             <span className="hidden sm:inline"> – {session.endTime}</span>
+          )}
+          {to24hr(session.time) && (
+            <span className="block text-[#1B1B8F]/25">
+              {to24hr(session.time)}
+              {session.endTime && to24hr(session.endTime) && (
+                <span className="hidden sm:inline"> – {to24hr(session.endTime)}</span>
+              )}
+            </span>
           )}
         </time>
         <span className={`badge ${config.color}`}>{config.label}</span>
